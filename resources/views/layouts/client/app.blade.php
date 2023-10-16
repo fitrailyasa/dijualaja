@@ -1,5 +1,5 @@
 @include('layouts.client.header')
 
-@yield("content")
+@yield('content')
 
 @include('layouts.client.footer')
