@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -69,8 +70,9 @@ class AdminUserController extends Controller
 
     public function edit(string $id)
     {
+        $roles = Role::all();
         $user = User::where('id', $id)->first();
-        return view('admin.user.update', compact('user'));
+        return view('admin.user.update', compact('user', 'roles'));
     }
 
     public function update(Request $request, string $id)

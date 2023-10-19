@@ -92,7 +92,7 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <a href="{{ route('profile.edit', auth()->user()->id) }}" class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         @if (Auth::user()->foto_user != null)
                             <img src="{{ asset('assets/profile/' . Auth::user()->foto_user) }}"
@@ -104,9 +104,9 @@
                         @endif
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block text-white">{{ auth()->user()->nama }}</a>
+                        <p class="d-block text-white">{{ auth()->user()->nama }}</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">

@@ -21,11 +21,29 @@
                 @endif
                 @csrf
                 @method('PUT')
-                <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Gambar User</label>
-                    <div class="col-sm-9">
-                        <img src="{{ asset('assets/images/') }}/{{ $user->gambar_user }}" alt="">
-                    </div>
+                <div class="d-flex justify-content-center m-4">
+                    <label for="gambar_user">
+                        @if ($user->gambar_user == null)
+                            <img src="{{ asset('assets/profile') }}/default.png" class="img-circle elevation-2"
+                                style="width:200px !important; height:200px !important;" alt="">
+                            @error('gambar_user')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        @else
+                            <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}"
+                                style="width:200px !important; height:200px !important;" class="img-circle elevation-2"
+                                alt="">
+                            @error('gambar_user')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        @endif
+                    </label>
+                    <img src="" id="output" style="width:200px; height:200px;"
+                        class="img-circle elevation-2 position-absolute visually-hidden" alt="">
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nama</label>

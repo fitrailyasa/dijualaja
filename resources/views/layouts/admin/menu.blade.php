@@ -28,15 +28,61 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('admin.user.index') }}" class="nav-link text-grey">
+                        <a href="{{ route('admin.user.index') }}" class="nav-link text-white">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Kelola Data User</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.user.create') }}" class="nav-link text-grey">
+                        <a href="{{ route('admin.user.create') }}" class="nav-link text-white">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Tambah Data User</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="nav-icon fas fa-box"></i>
+                    <p>
+                        Data Produk
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.produk.index') }}" class="nav-link text-white">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kelola Data Produk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.produk.create') }}" class="nav-link text-white">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Tambah Data Produk</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="nav-icon fas fa-tag"></i>
+                    <p>
+                        Data Kategori
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.kategori.index') }}" class="nav-link text-white">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kelola Data Kategori</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.kategori.create') }}" class="nav-link text-white">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Tambah Data Kategori</p>
                         </a>
                     </li>
                 </ul>

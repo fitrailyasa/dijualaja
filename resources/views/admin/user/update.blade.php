@@ -21,6 +21,34 @@
                 @endif
                 @csrf
                 @method('PUT')
+                <div class="d-flex justify-content-center m-4">
+                    <label for="gambar_user">
+                        @if ($user->gambar_user == null)
+                            <img src="{{ asset('assets/profile') }}/default.png" class="img-circle elevation-2"
+                                style="width:200px !important; height:200px !important;" alt="">
+                            <input type="file" class="visually-hidden" accept="image/*" onchange="loadFile(event)"
+                                placeholder="gambar_user" name="gambar_user" id="gambar_user" enabled>
+                            @error('gambar_user')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        @else
+                            <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}"
+                                style="width:200px !important; height:200px !important;" class="img-circle elevation-2"
+                                alt="">
+                            <input type="file" class="visually-hidden" accept="image/*" onchange="loadFile(event)"
+                                placeholder="gambar_user" name="gambar_user" id="gambar_user" enabled>
+                            @error('gambar_user')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        @endif
+                    </label>
+                    <img src="" id="output" style="width:200px; height:200px;"
+                        class="img-circle elevation-2 position-absolute visually-hidden" alt="">
+                </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nama</label>
                     <div class="col-sm-9">
@@ -77,26 +105,10 @@
                     <label class="col-sm-3 col-form-label">Roles ID</label>
                     <div class="col-sm-9">
                         <select class="col-sm-12 col-form-label rounded-2" name="roles_id" id="roles_id" enabled>
-                            <option selected value="{{ $user->roles_id }}">
-                                @if ($user->roles_id == 1)
-                                    Admin
-                            </option>
-                        @elseif($user->roles_id == 2)
-                            Seller
-                            </option>
-                        @elseif($user->roles_id == 3)
-                            Customer
-                            </option>
-                        @elseif($user->roles_id == 99)
-                            Guest
-                            </option>
-                            @endif
-                            @if (auth()->user()->roles_id == 1)
-                                <option value="1">Admin</option>
-                            @endif
-                            <option value="2">Seller</option>
-                            <option value="3">Customer</option>
-                            <option value="99">Guest</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}" {{ $user->roles_id == $role->id ? 'selected' : '' }}>
+                                    {{ $role->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -111,4 +123,16 @@
     </div>
     <!--./Edit user-->
 
+@endsection
+@section('script')
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+                output.classList.remove("visually-hidden");
+            }
+        };
+    </script>
 @endsection

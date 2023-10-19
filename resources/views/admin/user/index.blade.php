@@ -14,7 +14,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Roles ID</th>
+                            <th>Role</th>
                             <th>More</th>
                         </tr>
                     </thead>
@@ -24,21 +24,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->nama }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>
-                                    @if ($user->roles_id == 1)
-                                        Admin
-                                    @elseif($user->roles_id == 2)
-                                        Seller
-                                    @elseif($user->roles_id == 3)
-                                        Customer
-                                    @elseif($user->roles_id == 99)
-                                        Guest
-                                    @endif
-                                </td>
+                                <td>{{ $user->roles->nama }}</td>
                                 <td class="manage-row">
                                     @if (auth()->user()->roles_id == 1)
                                         <a href="{{ route('admin.user.show', $user->id) }}"
                                             class="btn-sm btn-success">Detail</a>
+                                        <a href="{{ route('admin.user.edit', $user->id) }}"
+                                            class="btn-sm btn-warning">Edit</a>
                                         <!-- Button trigger modal -->
                                         <a role="button" class="btn-sm btn-danger delete-button" data-bs-toggle="modal"
                                             data-bs-target=".bd-example-modal-sm{{ $user->id }}">
@@ -79,7 +71,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Roles ID</th>
+                            <th>Role</th>
                             <th>More</th>
                         </tr>
                     </tfoot>
