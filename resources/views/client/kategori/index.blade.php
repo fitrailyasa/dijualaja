@@ -1,19 +1,13 @@
 @extends('layouts.client.app')
 
-@section('title', 'kategori')
+@section('title', 'Kategori')
 
 @section('content')
 
-    <div class="vh-100" style="background-color: #24A384;">
-        <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-            <a href="{{ route('customer.kategori.index') }}" style="color:#E2DFEB;"><i
-                    class="fa-solid fa-arrow-left font-weight-bolder text-white"></i>
-                <span class="fw-bolder px-2" style="color: #E2DFEB;">Service kategori</span>
-            </a>
-        </section>
+    <div class="vh-100 pt-5 mt-5">
         <section class="px-4 body-section d-flex flex-column gap-3 pt-3" style="padding-bottom: 100px">
             @foreach ($kategoris as $kategori)
-                <a href="{{ route('customer.kategori.show', $kategori->id) }}"
+                <a href="{{ route('kategori.show', $kategori->id) }}"
                     class="d-flex align-items-center bg-white rounded-4 px-4 py-2 ">
                     <div class="d-flex">
                         @if ($kategori->gambar_kategori == null)
@@ -25,7 +19,7 @@
                         @endif
                     </div>
                     <div class="col d-flex flex-column justify-content-between">
-                        <span class="fw-bolder py-1">{{ $kategori->nama_kategori }}</span>
+                        <span class="fw-bolder py-1">{{ $kategori->nama_kategori ?? 'Data Kosong' }}</span>
                         <div class="font-weight-normal text-black">
                             <span>{{ $kategori->deskripsi_kategori }}</span>
                         </div>
@@ -47,5 +41,3 @@
     </div>
 
 @endsection
-
-@include('menu')

@@ -35,7 +35,7 @@
                             <p class="text-md fw-bolder">Pesanan #{{ $transaksi->user_order }}</p>
                             <div class="d-flex">
                                 <span class="text-md">
-                                    {{ $transaksi->jumlah_order }}
+                                    {{ $transaksi->jumlah_order ?? 'Data Kosong' }}
                                 </span>
                                 <span class="text-md px-2">
                                     {{ Str::limit($transaksi->pesan_order, 20) }}

@@ -61,11 +61,11 @@
   </div> --}}
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand" style="background-color: #117b46">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                    <a class="nav-link text-white" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
             </ul>
@@ -73,7 +73,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <a class="nav-link text-white" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
@@ -162,13 +162,31 @@
             <div class="container">
                 <div class="d-flex">
                     <ul class="nav col-12 align-items-center justify-content-between">
-                        <li><a href="{{ route('beranda') }}" class="nav-link px-2 text-white fw-bold"><i
+                        <li><a href="{{ route('dashboard') }}" class="nav-link px-2 text-white fw-bold"><i
                                     class="fa-solid fa-house fs-4"></i></a></li>
-                        <li><a href="{{ route('admin.produk.index') }}" class="nav-link px-2 text-white fw-bold"><i
-                                    class="fa-solid fa-box fs-4"></i></a>
+                        <li>
+                            @if (auth()->user()->roles_id == 1)
+                                <a href="{{ route('admin.produk.index') }}"
+                                    class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-box fs-4"></i></a>
+                            @elseif (auth()->user()->roles_id == 2)
+                                <a href="{{ route('seller.produk.index') }}"
+                                    class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-box fs-4"></i></a>
+                            @elseif (auth()->user()->roles_id == 3)
+                                <a href="{{ route('produk.index') }}" class="nav-link px-2 text-white fw-bold"><i
+                                        class="fa-solid fa-box fs-4"></i></a>
+                            @endif
                         </li>
-                        <li><a href="{{ route('admin.kategori.index') }}" class="nav-link px-2 text-white fw-bold"><i
-                                    class="fa-solid fa-tag fs-4"></i></a>
+                        <li>
+                            @if (auth()->user()->roles_id == 1)
+                                <a href="{{ route('admin.kategori.index') }}"
+                                    class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-tag fs-4"></i></a>
+                            @elseif (auth()->user()->roles_id == 2)
+                                <a href="{{ route('seller.kategori.index') }}"
+                                    class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-tag fs-4"></i></a>
+                            @elseif (auth()->user()->roles_id == 3)
+                                <a href="{{ route('kategori.index') }}" class="nav-link px-2 text-white fw-bold"><i
+                                        class="fa-solid fa-tag fs-4"></i></a>
+                            @endif
                         </li>
                         <li><a href="{{ route('profile.edit', auth()->user()->id) }}"
                                 class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-user fs-4"></i></a>

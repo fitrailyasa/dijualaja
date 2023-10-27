@@ -22,7 +22,7 @@
                             <h4 class="card-title">{{ $produk->nama_produk }}</h4>
                             {{-- <p class="card-text">{{ \Illuminate\Support\Str::limit($produk->deskripsi_produk, 50) }}</p> --}}
                             <p class="card-text fw-bold">Rp. {{ $produk->harga_produk }}</p>
-                            <button class="btn btn-sm btn-primary" data-id="{{ $produk->id }}">Detail</button>
+                            <a class="btn btn-sm btn-primary" href="{{ route('order.order', $produk->id) }}">Detail</a>
                         </div>
                     </div>
                 </div>

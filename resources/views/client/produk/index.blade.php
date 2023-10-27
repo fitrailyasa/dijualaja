@@ -1,15 +1,9 @@
 @extends('layouts.client.app')
 
-@section('title', 'produk')
+@section('title', 'Produk')
 
 @section('content')
-
-    <div class="vh-100" style="background-color: #24A384;">
-        <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="color: #E2DFEB; font-size: 20px;">
-            <a class="pr-3 text-light" href="{{ route('customer.m-kategori.index') }}"><i class="fa fa-arrow-left"
-                    aria-hidden="true"></i></a>
-            <span class="fw-bolder px-2">{{ $kategoris->nama_kategori }}</span>
-        </section>
+    <div class="vh-100 mt-5 pt-5">
         <section class="px-4 body-section d-flex flex-column gap-3 pt-3" style="padding-bottom: 100px">
             @foreach ($produks as $produk)
                 <div class="d-flex align-items-center bg-white rounded-4 px-4 py-2">
@@ -23,16 +17,16 @@
                         @endif
                     </div>
                     <div class="col d-flex flex-column flex-md-row justify-content-between">
-                        <span class="fw-bolder py-1">{{ $produk->nama_produk }}</span>
+                        <span class="fw-bolder py-1">{{ $produk->nama_produk ?? 'Data Kosong' }}</span>
                         <div class="d-flex justify-content-end gap-2">
-                            <a href="/member/order/{{ $produk->id }}">
-                                <button class="btn fw-bold rounded-3" style="background-color: #D6C37E;" id="desc-toggle">
+                            <a href="{{ route('order.order', $produk->id) }}">
+                                <button class="btn fw-bold rounded-3 btn-warning" id="desc-toggle">
                                     Order
                                 </button>
                             </a>
                             <a
                                 href="https://wa.me/+6281397575460?text=Halo admin SOC Clean Lampung, Saya {{ auth()->user()->nama }}">
-                                <button class="btn fw-bold rounded-3" style="background-color: #D6C37E;" id="Chat">
+                                <button class="btn fw-bold rounded-3 btn-success" id="Chat">
                                     Chat
                                 </button>
                             </a>
@@ -41,8 +35,5 @@
                 </div>
             @endforeach
         </section>
-
     </div>
-
-    @include('menu')
 @endsection

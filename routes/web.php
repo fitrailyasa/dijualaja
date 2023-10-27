@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('kategori', ClientKategoriController::class);
   Route::resource('produk', ClientProdukController::class);
   Route::resource('order', ClientOrderController::class);
+  Route::get('/orderin/{id}', [ClientOrderController::class, 'order'])->name('order.order');
   Route::get('/profile/{id}', [UserProfileController::class, 'edit'])->name('profile.edit');
   Route::post('/profile/{id}', [UserProfileController::class, 'update'])->name('profile.update');
 });
