@@ -113,7 +113,6 @@ class AdminProdukController extends Controller
         $produk = Produk::where('id', $id)->first();
         $produk->update(
             [
-                'kategori_id' => $request->kategori_id,
                 'nama_produk' => $request->nama_produk,
                 'deskripsi_produk' => $request->deskripsi_produk,
                 'stok_produk' => $request->stok_produk,

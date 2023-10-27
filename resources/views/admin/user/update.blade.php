@@ -112,7 +112,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="mb-3">
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>

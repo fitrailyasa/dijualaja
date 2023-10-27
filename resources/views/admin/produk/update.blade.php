@@ -73,15 +73,22 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Kategori produk</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="kategori produk" name="kategori_id"
-                            id="kategori_id" value="{{ $produk->kategori->nama_kategori }}" required>
+                        <select class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id"
+                            id="kategori_id">
+                            @foreach ($kategoris as $kategori)
+                                @if ($kategori->id == $produk->kategori_id)
+                                    <option value="{{ $kategori->id }}" selected>{{ $kategori->nama_kategori }}
+                                    </option>
+                                @else
+                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <div class="row">
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </div>
+                <div class="mb-3">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
                 </form>

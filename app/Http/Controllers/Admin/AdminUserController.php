@@ -24,7 +24,8 @@ class AdminUserController extends Controller
 
     public function create()
     {
-        return view('admin.user.create');
+        $roles = Role::all();
+        return view('admin.user.create', compact('roles'));
     }
 
     public function store(Request $request)

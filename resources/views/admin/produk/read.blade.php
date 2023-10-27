@@ -18,6 +18,9 @@
             <div class="card-body">
                 @if (auth()->user()->roles_id == 1)
                     <form method="POST" action="{{ route('admin.produk.show', $produk->id) }}" enctype='multipart/form-data'>
+                    @elseif (auth()->user()->roles_id == 2)
+                        <form method="POST" action="{{ route('seller.produk.show', $produk->id) }}"
+                            enctype='multipart/form-data'>
                 @endif
                 @csrf
                 @method('PUT')
@@ -69,11 +72,13 @@
                             id="kategori_id" value="{{ $produk->kategori->nama_kategori }}" disabled>
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <div class="row">
-                        <div class="text-right">
+                <div class="mb-3">
+                    <div class="text-right">
+                        @if (auth()->user()->roles_id == 1)
                             <a href="{{ route('admin.produk.edit', $produk->id) }}" class="btn btn-primary">Edit</a>
-                        </div>
+                        @elseif (auth()->user()->roles_id == 2)
+                            <a href="{{ route('seller.produk.edit', $produk->id) }}" class="btn btn-primary">Edit</a>
+                        @endif
                     </div>
                 </div>
                 </form>

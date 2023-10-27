@@ -2,6 +2,14 @@
 
 @section('title', 'Tambah produk')
 
+@section('backlink')
+    @if (auth()->user()->roles_id == 1)
+        <a href="{{ route('admin.produk.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @elseif (auth()->user()->roles_id == 2)
+        <a href="{{ route('seller.produk.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @endif
+@endsection
+
 @section('content')
 
     <!--tambah produk-->
@@ -24,7 +32,6 @@
                 </div>
             </div>
             <div class="card-body p-3 bg-success text-white">
-                @csrf
                 <div class="d-flex justify-content-center m-4">
                     <label for="gambar_produk" style="cursor: pointer">
                         <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
@@ -49,6 +56,7 @@
                             @error('kategori_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
+                        </select>
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">

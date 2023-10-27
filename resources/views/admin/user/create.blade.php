@@ -23,8 +23,8 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nama</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="nama"
-                            name="nama" id="nama" required>
+                        <input type="text" class="form-control @error('nama') is-invalid @enderror"
+                            placeholder="Masukkan nama" name="nama" id="nama" required>
                         @error('nama')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -33,8 +33,8 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email"
-                            name="email" id="email" required>
+                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Masukkan email" name="email" id="email" required>
                         @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -44,7 +44,7 @@
                     <label class="col-sm-3 col-form-label">No Telepon</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control @error('no_telepon') is-invalid @enderror"
-                            placeholder="no_telepon" name="no_telepon" id="no_telepon" required>
+                            placeholder="Masukkan no telepon" name="no_telepon" id="no_telepon" required>
                         @error('no_telepon')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -54,7 +54,7 @@
                     <label class="col-sm-3 col-form-label">Password</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control @error('password') is-invalid @enderror"
-                            placeholder="password" name="password" id="password" required>
+                            placeholder="Masukkan password" name="password" id="password" required>
                         @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -64,11 +64,9 @@
                     <label class="col-sm-3 col-form-label">Roles ID</label>
                     <div class="col-sm-9">
                         <select class="col-sm-12 col-form-label rounded-2" name="roles_id" id="roles_id" required>
-                            @if (auth()->user()->roles_id == 1)
-                                <option selected value="1">Admin</option>
-                            @endif
-                            <option value="3">Member</option>
-                            <option value="99">Guest</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

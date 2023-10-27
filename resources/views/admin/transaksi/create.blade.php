@@ -2,6 +2,14 @@
 
 @section('title', 'Transaksi')
 
+@section('backlink')
+    @if (auth()->user()->roles_id == 1)
+        <a href="{{ route('admin.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @elseif (auth()->user()->roles_id == 2)
+        <a href="{{ route('seller.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @endif
+@endsection
+
 @section('content')
 
     <div class="col-lg-12 col-lg-12 form-wrapper" id="Transaksi">

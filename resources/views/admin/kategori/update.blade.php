@@ -19,6 +19,9 @@
                 @if (auth()->user()->roles_id == 1)
                     <form method="POST" action="{{ route('admin.kategori.show', $kategori->id) }}"
                         enctype='multipart/form-data'>
+                    @elseif (auth()->user()->roles_id == 2)
+                        <form method="POST" action="{{ route('seller.kategori.show', $kategori->id) }}"
+                            enctype='multipart/form-data'>
                 @endif
                 @csrf
                 @method('PUT')
@@ -44,34 +47,37 @@
                     </label>
                 </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label">Nama kategori</label>
+                    <label class="col-sm-3 col-form-label">Kategori</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="nama kategori" name="nama_kategori"
-                            id="nama_kategori" value="{{ $kategori->nama_kategori }}" required>
+                        <input type="text" class="form-control @error('nama_kategori') is-invalid @enderror"
+                            placeholder="Kategori" name="nama_kategori" id="nama_kategori"
+                            value="{{ $kategori->nama_kategori }}" required>
+                        @error('nama_kategori')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <div class="row">
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
+                <div class="mb-3">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
                 </form>
             </div>
         </div>
-        <!--./edit kategori-->
+    </div>
+    <!--./edit kategori-->
 
-    @endsection
-    @section('script')
-        <script>
-            var loadFile = function(event) {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                    output.classList.remove("visually-hidden");
-                }
-            };
-        </script>
-    @endsection
+@endsection
+@section('script')
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+                output.classList.remove("visually-hidden");
+            }
+        };
+    </script>
+@endsection

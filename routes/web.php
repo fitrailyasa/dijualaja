@@ -64,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
   // CMS CUSTOMER
   Route::middleware([Client::class])->name('customer.')->prefix('customer')->group(function () {
       Route::get('/', [HomeController::class, 'index'])->name('beranda');
-      Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+      Route::get('/dashboard', [ClientDashboardController::class, 'index'])->name('dashboard');
     });
     
   Route::resource('kategori', ClientKategoriController::class);
