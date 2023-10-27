@@ -100,8 +100,12 @@ class ClientOrderController extends Controller
             $foto_pembayaran->move('../public/assets/img/pembayaran/',time().'_'.$foto_pembayaran->getClientOriginalName());
         }
 
+        $dd($listorder);
+        $dd($detailorder);
+        exit();
+
         if (auth()->user()->roles_id == 3) {
-            return redirect('customer/m-order')->with('sukses', 'Berhasil Order!');
+            return redirect('customer/order')->with('sukses', 'Berhasil Order!');
         }
     }
 

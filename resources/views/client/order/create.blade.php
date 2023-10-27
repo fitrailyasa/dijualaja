@@ -134,13 +134,13 @@
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jumlah_order">Jumlah
+                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="">Jumlah
                                                 order</label>
                                         </div>
                                         <input
-                                            class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal @error('jumlah_order') is-invalid @enderror"
-                                            type="text" name="jumlah_order" required id="jumlah_order" required>
-                                        @error('jumlah_order')
+                                            class="border-0 rounded-3 py-2 px-3 w-100 text-lg fw-normal @error('') is-invalid @enderror"
+                                            type="number" name="" required id="" required>
+                                        @error('')
                                             <span class="invalid-feedback text-center" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -160,13 +160,14 @@
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jumlah_order">Tanggal
+                                            <label class="fw-bold text-md text-white mb-0 mt-2"
+                                                for="tanggal_order">Tanggal
                                                 Order</label>
                                         </div>
                                         <input class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal"
-                                            type="text" name="jumlah_order" required id="jumlah_order"
+                                            type="text" name="tanggal_order" required id="tanggal_order"
                                             value="{{ $now }}" disabled>
-                                        <input type="hidden" name="jumlah_order" value="{{ $now }}">
+                                        <input type="hidden" name="tanggal_order" value="{{ $now }}">
                                     </div>
                                 </div>
 
