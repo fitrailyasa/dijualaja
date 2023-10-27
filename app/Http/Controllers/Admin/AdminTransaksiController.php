@@ -87,9 +87,9 @@ class AdminTransaksiController extends Controller
         ]);
 
         if (auth()->user()->roles_id == 1) {
-            return redirect('admin/laporan')->with('sukses', 'Berhasil Tambah Data!');
+            return redirect('admin/transaksi')->with('sukses', 'Berhasil Tambah Data!');
         } elseif (auth()->user()->roles_id == 2) {
-            return redirect('seller/laporan')->with('sukses', 'Berhasil Tambah Data!');
+            return redirect('seller/transaksi')->with('sukses', 'Berhasil Tambah Data!');
         }
     }
 

@@ -88,6 +88,14 @@
                 </ul>
             </li>
             <li class="nav-item">
+                <a href="{{ route('admin.transaksi.index') }}" class="nav-link text-white">
+                    <i class="nav-icon fas fa-history"></i>
+                    <p>
+                        Riwayat Transaksi
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
                     @csrf
                 </form>

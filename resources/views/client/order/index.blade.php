@@ -1,59 +1,88 @@
 @extends('layouts.client.app')
 
-@section('title', 'List Order')
+@section('title', 'Transaksi')
+
+@section('backlink')
+    @if (auth()->user()->roles_id == 1)
+        <a href="{{ route('admin.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @elseif (auth()->user()->roles_id == 2)
+        <a href="{{ route('seller.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @elseif (auth()->user()->roles_id == 2)
+        <a href="{{ route('dashboard') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @endif
+@endsection
 
 @section('content')
-
-    <div class="vh-100">
-        <div class="d-flex px-3 pt-4">
-            <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-                <a href="/member" style="color:#E2DFEB;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                    <span class="fw-bolder px-2">Transaksi</span>
-                </a>
-            </section>
-        </div>
-
+    <div class="container pt-5 mt-5">
         <section class="row d-flex justify-content-center">
-            <p class="row justify-content-center text-white">
+            <p class="row justify-content-center">
                 Menampilkan semua riwayat transaksi
             </p>
-            <hr class="row w-75" style="background-color: #E2DFEB; color: #fff; height: 3px;">
+            <hr class="row w-75" style="background-color: rgb(48, 48, 48);; color: #fff; height: 3px;">
         </section>
 
-        <section class="w-100 d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 15vh;">
-            @foreach ($orders->where('user_id') as $order)
-                <div class="card p-2 rounded-3" style="width: 75%;">
+        <section id="listorders" class="w-100 d-flex flex-column justify-content-center align-items-center"
+            style="padding-bottom: 15vh;">
+            <input class="my-3 w-75 form-control" type="text" id="myInput" onkeyup="search()" placeholder="Search...">
+            @foreach ($orders->where('user_id') as $transaksi)
+                <div id="kartu-{{ $transaksi->id }}" class="card p-2 rounded-3 bg-success" style="width: 75%;">
                     <div class="d-flex mb-3">
                         <div class="d-flex justify-content-center align-content-center">
                             <i class="fa-regular fa-file-lines p-3" style="font-size: 2rem;"></i>
                         </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="text-md fw-bolder">Pesanan #{{ $order->user_order }}</p>
+                        <div class="d-flex flex-column justify-content-center  overflow-hidden">
+                            <p class="text-md fw-bolder">Pesanan #{{ $transaksi->user_order }}</p>
                             <div class="d-flex">
                                 <span class="text-md">
-                                    {{ $order->jumlah_order }}
+                                    {{ $transaksi->jumlah_order }}
                                 </span>
-                                <span class="text-md px-2 w-50">
-                                    {{ Str::limit($order->pesan_order, 8) }}
+                                <span class="text-md px-2">
+                                    {{ Str::limit($transaksi->pesan_order, 20) }}
                                 </span>
                             </div>
                         </div>
                     </div>
                     <hr class="col mt-0" style="background-color: white; color: #3d3c42; height: 3px;">
                     <div class="d-flex px-2 flex-row justify-content-between align-items-center">
-                        <span class="">{{ $order->status_order }}</span>
-                        @if (auth()->user()->roles_id == 3)
-                            <a href="{{ route('customer.m-order.show', $order->id) }}" class="text-decoration-none">
-                                <button class="btn border border-3">Detail</button>
+                        <span class="">{{ $transaksi->status_order }}</span>
+                        @if (auth()->user()->roles_id == 1)
+                            <a href="{{ route('admin.transaksi.edit', $transaksi->id) }}" class="text-decoration-none">
+                                <button class="btn border border-3 text-white">Detail</button>
+                            </a>
+                        @elseif (auth()->user()->roles_id == 2)
+                            <a href="{{ route('seller.transaksi.edit', $transaksi->id) }}" class="text-decoration-none">
+                                <button class="btn border border-3 text-white">Detail</button>
                             </a>
                         @endif
-
                     </div>
                 </div>
             @endforeach
         </section>
     </div>
-
 @endsection
 
-@include('menu')
+@section('script')
+    <script>
+        function search() {
+            // mendapatkan inputan pencarian
+            var input, filter, listorders, kartu, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            listorders = document.getElementById("listorders");
+            kartu = listorders.getElementsByClassName("card");
+
+            // melakukan iterasi pada setiap kartu
+            for (i = 0; i < kartu.length; i++) {
+                txtValue = kartu[i].textContent || kartu[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    // jika sesuai dengan pencarian, hapus class visually-hidden
+                    kartu[i].classList.remove("visually-hidden");
+                } else {
+                    // jika tidak sesuai dengan pencarian, tambahkan class visually-hidden
+                    kartu[i].classList.add("visually-hidden");
+                }
+            }
+        }
+    </script>
+    </div>
+@endsection

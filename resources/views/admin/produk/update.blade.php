@@ -45,28 +45,28 @@
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Nama produk</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="nama produk" name="nama_produk"
+                        <input type="text" class="form-control" placeholder="Masukkan nama produk" name="nama_produk"
                             id="nama_produk" value="{{ $produk->nama_produk }}" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Deskripsi produk</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="deskripsi produk" name="deskripsi_produk"
-                            id="deskripsi_produk" value="{{ $produk->deskripsi_produk }}" required>
+                        <input type="text" class="form-control" placeholder="Masukkan deskripsi produk"
+                            name="deskripsi_produk" id="deskripsi_produk" value="{{ $produk->deskripsi_produk }}" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Harga produk</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="harga produk" name="harga_produk"
+                        <input type="number" class="form-control" placeholder="Masukkan harga produk" name="harga_produk"
                             id="harga_produk" value="{{ $produk->harga_produk }}" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Stok produk</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="stok produk" name="stok_produk"
+                        <input type="number" class="form-control" placeholder="Masukkan stok produk" name="stok_produk"
                             id="stok_produk" value="{{ $produk->stok_produk }}" required>
                     </div>
                 </div>
@@ -94,18 +94,19 @@
                 </form>
             </div>
         </div>
-        <!--./edit produk-->
+    </div>
+    <!--./edit produk-->
 
-    @endsection
-    @section('script')
-        <script>
-            var loadFile = function(event) {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                    output.classList.remove("visually-hidden");
-                }
-            };
-        </script>
-    @endsection
+@endsection
+@section('script')
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+                output.classList.remove("visually-hidden");
+            }
+        };
+    </script>
+@endsection

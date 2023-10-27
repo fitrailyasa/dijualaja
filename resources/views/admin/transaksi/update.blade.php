@@ -2,34 +2,28 @@
 
 @section('title', 'Konfirmasi Order')
 
+@section('backlink')
+    @if (auth()->user()->roles_id == 1)
+        <a href="{{ route('admin.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @elseif (auth()->user()->roles_id == 2)
+        <a href="{{ route('seller.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+    @endif
+@endsection
+
 @section('content')
 
     <div class="vh-100">
-        @if (auth()->user()->roles_id == 1)
-            <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-                <a href="{{ route('super.transaksi.index') }}" style="color:black;">
-                    <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                    <span class="fw-bolder px-2">Konfirmasi Order</span>
-                </a>
-            </section>
-        @elseif(auth()->user()->roles_id == 2)
-            <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-                <a href="{{ route('admin.transaksi.index') }}" style="color:black;">
-                    <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                    <span class="fw-bolder px-2">Konfirmasi Order</span>
-                </a>
-            </section>
-        @endif
         <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
-            <a href="https://wa.me/+62{{ $order->no_telepon }}?text=Halo saya admin SOC Clean Lampung">
-                <button class="btn fw-bold rounded-3 btn-dark" style="text-align: center;" id="Chat">
+            <a
+                href="https://wa.me/+62{{ $order->no_telepon }}?text=Halo saya {{ $order->user_order }} mengkonfirmasi pesanan">
+                <button class="btn fw-bold rounded-3 btn-success" style="text-align: center;" id="Chat">
                     Chat User
                     <i class="fa-brands fa-whatsapp font-weight-bolder"></i>
                 </button>
             </a>
         </div>
         <section class="px-4 pb-5">
-            <form action="{{ route('super.transaksi.update', $order->id) }}" method="POST">
+            <form action="{{ route('admin.transaksi.update', $order->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -46,7 +40,7 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-center w-100 py-4">
-                    <button class="btn btn-dark w-50" type="submit">Update Status</button>
+                    <button class="btn btn-primary w-50" type="submit">Update Status</button>
                 </div>
             </form>
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -119,8 +113,7 @@
                     <label class="fw-bold text-md" for="jenis_kategori">Jenis kategori</label>
                 </div>
                 <input class="border-1 rounded-3 py-2 px-3 w-75 @error('jenis_kategori') is-invalid @enderror"
-                    type="text" name="jenis_kategori" id="jenis_kategori" value="{{ $order->jenis_kategori }}"
-                    disabled>
+                    type="text" name="jenis_kategori" id="jenis_kategori" value="{{ $order->jenis_kategori }}" disabled>
                 @error('jenis_kategori')
                     <span class="invalid-feedback text-center" role="alert">
                         <strong>{{ $message }}</strong>
@@ -143,7 +136,7 @@
 
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex w-75">
-                    <label class="fw-bold text-md" for="pesan_order">pesan_order</label>
+                    <label class="fw-bold text-md" for="pesan_order">Pesan dari order</label>
                 </div>
                 <input class="border-1 rounded-3 py-2 px-3 w-75" type="text" name="pesan_order" id="pesan_order"
                     value="{{ $order->pesan_order }}" disabled>
@@ -177,7 +170,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <button data-bs-target="#modal_pesan_order" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        class="btn btn-dark mt-3">Lihat</button>
+                        class="btn btn-primary mt-3">Lihat</button>
                 </div>
                 <div class="d-flex flex-column w-75 align-items-center">
                     <label class="fw-bold text-md" for="foto_pembayaran">Foto Pembayaran</label>
@@ -188,7 +181,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <button data-bs-target="#modal_pembayaran" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        class="btn btn-dark mt-3">Lihat</button>
+                        class="btn btn-primary mt-3">Lihat</button>
                 </div>
                 <div class="modal fade show" id="modal_pesan_order" tabindex="-1" aria-labelledby="modal_pesan_order"
                     aria-modal="false" role="dialog">
