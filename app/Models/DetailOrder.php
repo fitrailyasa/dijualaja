@@ -11,7 +11,7 @@ class DetailOrder extends Model
     protected $table = 'detail_order';
     protected $fillable = [
         'list_id',
-        'foto_keluhan',
+        'foto_pesan_order',
         'opsi_pengiriman',
         'pembayaran',
         'foto_pembayaran',

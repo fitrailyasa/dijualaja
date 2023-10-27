@@ -40,13 +40,13 @@ class ClientOrderController extends Controller
                 'user_order' => 'required|max:255',
                 'jenis_kategori' => 'required',
                 'no_telepon' => 'required',
-                'waktu_order' => 'required',
+                'jumlah_order' => 'required',
                 'alamat_order' => 'required',
                 'harga_order' => 'required',
-                'keluhan' => 'required',
+                'pesan_order' => 'required',
                 'opsi_pengiriman' => 'required',
                 'pembayaran' => 'required',
-                'foto_keluhan' => 'mimes:jpg,bmp,png,svg,jpeg,heif,hevc|max:10240',
+                'foto_pesan_order' => 'mimes:jpg,bmp,png,svg,jpeg,heif,hevc|max:10240',
                 'foto_pembayaran' => 'mimes:jpg,bmp,png,svg,jpeg,heif,hevc|max:10240',
             ],
             [
@@ -54,15 +54,15 @@ class ClientOrderController extends Controller
                 'user_order.max' => 'Nama Pemesan tidak boleh lebih dari 255 karakter',
                 'jenis_kategori.required' => 'Jenis kategori tidak boleh kosong',
                 'no_telepon.required' => 'Nomor Telepon tidak boleh kosong',
-                'waktu_order.required' => 'Waktu Order tidak boleh kosong',
+                'jumlah_order.required' => 'Waktu Order tidak boleh kosong',
                 'alamat_order.required' => 'Alamat Order tidak boleh kosong',
                 'harga_order.required' => 'Harga Order tidak boleh kosong',
-                'keluhan.required' => 'Keluhan tidak boleh kosong',
+                'pesan_order.required' => 'pesan_order tidak boleh kosong',
                 'opsi_pengiriman.required' => 'Opsi Pengiriman tidak boleh kosong',
                 'pembayaran.required' => 'Pembayaran tidak boleh kosong',
                 'no_rekening.required' => 'Nomor Rekening tidak boleh kosong',
-                'foto_keluhan.mimes' => 'Foto Keluhan harus berupa file: jpg, bmp, png, svg, jpeg, heif, hevc',
-                'foto_keluhan.max' => 'Foto Keluhan tidak boleh lebih dari 10 MB',
+                'foto_pesan_order.mimes' => 'Foto pesan_order harus berupa file: jpg, bmp, png, svg, jpeg, heif, hevc',
+                'foto_pesan_order.max' => 'Foto pesan_order tidak boleh lebih dari 10 MB',
                 'foto_pembayaran.mimes' => 'Foto Pembayaran harus berupa file: jpg, bmp, png, svg, jpeg, heif, hevc',
                 'foto_pembayaran.max' => 'Foto Pembayaran tidak boleh lebih dari 10 MB',
             ]
@@ -78,11 +78,11 @@ class ClientOrderController extends Controller
                 'jenis_kategori' => $request->jenis_kategori,
                 'no_telepon' => $request->no_telepon,
                 'jenis_transaksi' => 'pemasukan',
-                'waktu_order' => $request->waktu_order,
+                'jumlah_order' => $request->jumlah_order,
                 'alamat_order' => $request->alamat_order,
                 'harga_order' => $request->harga_order,
                 'status_order' => 'Menunggu Konfirmasi',
-                'keluhan' => $request->keluhan
+                'pesan_order' => $request->pesan_order
                 ]
             );
 
@@ -94,14 +94,14 @@ class ClientOrderController extends Controller
         ]);
         
         $validasi = $request->validate([
-            'foto_keluhan' => 'mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
+            'foto_pesan_order' => 'mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
             'foto_pembayaran' => 'mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
         ]);
-        if($request->hasFile('foto_keluhan')){
-            $foto_keluhan = $validasi[('foto_keluhan')];
-            $detailorder->foto_keluhan = time().'_'.$foto_keluhan->getClientOriginalName();
+        if($request->hasFile('foto_pesan_order')){
+            $foto_pesan_order = $validasi[('foto_pesan_order')];
+            $detailorder->foto_pesan_order = time().'_'.$foto_pesan_order->getClientOriginalName();
             $detailorder->update();
-            $foto_keluhan->move('../public/assets/img/keluhan/',time().'_'.$foto_keluhan->getClientOriginalName());
+            $foto_pesan_order->move('../public/assets/img/pesan_order/',time().'_'.$foto_pesan_order->getClientOriginalName());
         }
         if($request->hasFile('foto_pembayaran')){
             $foto_pembayaran = $validasi[('foto_pembayaran')];

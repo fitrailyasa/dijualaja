@@ -16,14 +16,14 @@ class AdminTransaksiController extends Controller
      */
     public function index()
     {
-        $listorders = ListOrder::orderBy('waktu_order', 'desc')->get();
+        $listorders = ListOrder::orderBy('jumlah_order', 'desc')->get();
         return view('admin.transaksi.index', compact('listorders'));
     }
 
     public function indexLaporan()
     {
         $laporans = ListOrder::where('status_order', 'Selesai')
-        ->orderBy('waktu_order', 'desc')
+        ->orderBy('jumlah_order', 'desc')
         ->get();
         return view('admin.pembukuan.laporan', compact('laporans'));
     }
@@ -31,7 +31,7 @@ class AdminTransaksiController extends Controller
     public function indexChart()
     {
         $orders = DB::table('list_order')
-                    ->select(DB::raw("MONTH(waktu_order) as month"), 'jenis_transaksi', DB::raw('SUM(harga_order) as total'))
+                    ->select(DB::raw("MONTH(jumlah_order) as month"), 'jenis_transaksi', DB::raw('SUM(harga_order) as total'))
                     ->where('status_order', 'Selesai')
                     ->groupBy('month', 'jenis_transaksi')
                     ->orderBy('month', 'asc')
@@ -58,14 +58,14 @@ class AdminTransaksiController extends Controller
             [
                 'user_order' => 'required',
                 'jenis_transaksi' => 'required',
-                'keluhan' => 'required',
-                'waktu_order' => 'required',
+                'pesan_order' => 'required',
+                'jumlah_order' => 'required',
                 'harga_order' => 'required|numeric'
             ],[
                 'user_order.required' => 'Nama Pemesan tidak boleh kosong',
                 'jenis_transaksi.required' => 'Jenis Transaksi tidak boleh kosong',
-                'keluhan.required' => 'Keluhan tidak boleh kosong',
-                'waktu_order.required' => 'Waktu Order tidak boleh kosong',
+                'pesan_order.required' => 'pesan_order tidak boleh kosong',
+                'jumlah_order.required' => 'Waktu Order tidak boleh kosong',
                 'harga_order.required' => 'Harga Order tidak boleh kosong',
                 'harga_order.numeric' => 'Harga Order harus berupa angka'
             ]
@@ -76,9 +76,9 @@ class AdminTransaksiController extends Controller
             'token' => $token,
             'user_order' => $request->user_order,
             'jenis_transaksi' => $request->jenis_transaksi,
-            'waktu_order' => $request->waktu_order,
+            'jumlah_order' => $request->jumlah_order,
             'harga_order' => $request->harga_order,
-            'keluhan' => $request->keluhan,
+            'pesan_order' => $request->pesan_order,
             'status_order' => "Selesai"
         ]);
 

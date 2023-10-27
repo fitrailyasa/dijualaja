@@ -40,10 +40,10 @@
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
-                        <label class="fw-bold text-md text-white" for="waktu_order">Tanggal Order</label>
+                        <label class="fw-bold text-md text-white" for="jumlah_order">Tanggal Order</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="waktu_order" id="waktu_order" value="{{ $order->waktu_order }}" disabled>
+                        name="jumlah_order" id="jumlah_order" value="{{ $order->jumlah_order }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -80,10 +80,10 @@
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
-                        <label class="fw-bold text-md text-white" for="keluhan">Keluhan</label>
+                        <label class="fw-bold text-md text-white" for="pesan_order">pesan_order</label>
                     </div>
-                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="keluhan"
-                        id="keluhan" value="{{ $order->keluhan }}" disabled>
+                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
+                        name="pesan_order" id="pesan_order" value="{{ $order->pesan_order }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -96,11 +96,11 @@
 
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex flex-column w-75 align-items-center">
-                        <label class="fw-bold text-md text-white" for="foto_keluhan">Foto Keluhan</label>
-                        <a href="{{ asset('assets/img/keluhan') }}/{{ $detail->foto_keluhan }}">
-                            <img src="{{ asset('assets/img/keluhan') }}/{{ $detail->foto_keluhan }}"
+                        <label class="fw-bold text-md text-white" for="foto_pesan_order">Foto pesan_order</label>
+                        <a href="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}">
+                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}"
                                 class="border-0 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
-                                name="foto_keluhan" id="foto_keluhan">
+                                name="foto_pesan_order" id="foto_pesan_order">
                         </a>
                     </div>
                     <div class="d-flex flex-column w-75 align-items-center">

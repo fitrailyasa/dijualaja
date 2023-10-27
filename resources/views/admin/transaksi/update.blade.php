@@ -77,11 +77,11 @@
 
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex w-75">
-                    <label class="fw-bold text-md" for="waktu_order">Tanggal Order</label>
+                    <label class="fw-bold text-md" for="jumlah_order">Tanggal Order</label>
                 </div>
-                <input class="border-1 rounded-3 py-2 px-3 w-75 @error('waktu_order') is-invalid @enderror" type="text"
-                    name="waktu_order" id="waktu_order" value="{{ $order->waktu_order }}" disabled>
-                @error('waktu_order')
+                <input class="border-1 rounded-3 py-2 px-3 w-75 @error('jumlah_order') is-invalid @enderror" type="text"
+                    name="jumlah_order" id="jumlah_order" value="{{ $order->jumlah_order }}" disabled>
+                @error('jumlah_order')
                     <span class="invalid-feedback text-center" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -143,11 +143,11 @@
 
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex w-75">
-                    <label class="fw-bold text-md" for="keluhan">Keluhan</label>
+                    <label class="fw-bold text-md" for="pesan_order">pesan_order</label>
                 </div>
-                <input class="border-1 rounded-3 py-2 px-3 w-75" type="text" name="keluhan" id="keluhan"
-                    value="{{ $order->keluhan }}" disabled>
-                @error('keluhan')
+                <input class="border-1 rounded-3 py-2 px-3 w-75" type="text" name="pesan_order" id="pesan_order"
+                    value="{{ $order->pesan_order }}" disabled>
+                @error('pesan_order')
                     <span class="invalid-feedback text-center" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -169,14 +169,14 @@
 
             <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex flex-column w-75 align-items-center">
-                    <label class="fw-bold text-md" for="foto_keluhan">Foto Keluhan</label>
-                    <img src="{{ asset('assets/img/keluhan') }}/{{ $detail->foto_keluhan }}"
+                    <label class="fw-bold text-md" for="foto_pesan_order">Foto pesan_order</label>
+                    <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}"
                         class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
-                        name="foto_keluhan" id="foto_keluhan">
-                    @error('foto_keluhan')
+                        name="foto_pesan_order" id="foto_pesan_order">
+                    @error('foto_pesan_order')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <button data-bs-target="#modal_keluhan" data-bs-toggle="modal" data-bs-dismiss="modal"
+                    <button data-bs-target="#modal_pesan_order" data-bs-toggle="modal" data-bs-dismiss="modal"
                         class="btn btn-dark mt-3">Lihat</button>
                 </div>
                 <div class="d-flex flex-column w-75 align-items-center">
@@ -190,7 +190,7 @@
                     <button data-bs-target="#modal_pembayaran" data-bs-toggle="modal" data-bs-dismiss="modal"
                         class="btn btn-dark mt-3">Lihat</button>
                 </div>
-                <div class="modal fade show" id="modal_keluhan" tabindex="-1" aria-labelledby="modal_keluhan"
+                <div class="modal fade show" id="modal_pesan_order" tabindex="-1" aria-labelledby="modal_pesan_order"
                     aria-modal="false" role="dialog">
                     <div class="modal-dialog modal-fullscreen">
                         <div class="modal-content">
@@ -200,9 +200,9 @@
                                     <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                                 </button>
                             </div>
-                            <img src="{{ asset('assets/img/keluhan') }}/{{ $detail->foto_keluhan }}"
+                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}"
                                 class="border-1 rounded-3 py-2 px-3 bg-white align-items-center justify-content-center d-flex vh-100"
-                                style="object-fit: contain" name="foto_keluhan" id="foto_keluhan">
+                                style="object-fit: contain" name="foto_pesan_order" id="foto_pesan_order">
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                             </div>
                             <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran }}"
                                 class="border-1 rounded-3 py-2 px-3 bg-white align-items-center justify-content-center d-flex vh-100"
-                                style="object-fit: contain" name="foto_keluhan" id="foto_keluhan">
+                                style="object-fit: contain" name="foto_pesan_order" id="foto_pesan_order">
                         </div>
                     </div>
                 </div>

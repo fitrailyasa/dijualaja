@@ -16,10 +16,10 @@ class ListOrder extends Model
         'no_telepon',
         'jenis_kategori',
         'jenis_transaksi',
-        'waktu_order',
+        'jumlah_order',
         'alamat_order',
         'harga_order',
         'status_order',
-        'keluhan'
+        'pesan_order'
     ];
 }

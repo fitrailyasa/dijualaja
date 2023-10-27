@@ -31,10 +31,10 @@
                             <p class="text-md fw-bolder">Pesanan #{{ $order->user_order }}</p>
                             <div class="d-flex">
                                 <span class="text-md">
-                                    {{ $order->waktu_order }}
+                                    {{ $order->jumlah_order }}
                                 </span>
                                 <span class="text-md px-2 w-50">
-                                    {{ Str::limit($order->keluhan, 8) }}
+                                    {{ Str::limit($order->pesan_order, 8) }}
                                 </span>
                             </div>
                         </div>

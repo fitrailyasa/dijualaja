@@ -33,13 +33,13 @@ class AdminProdukController extends Controller
                 'harga_produk' => 'required|numeric',
             ],[
                 'kategori_id.required' => 'kategori Tidak Boleh Kosong!',
-                'nama_produk.required' => 'Nama Sub kategori Tidak Boleh Kosong!',
-                'nama_produk.max' => 'Nama Sub kategori Terlalu Panjang!',
-                'deskripsi_produk.required' => 'Deskripsi Sub kategori Tidak Boleh Kosong!',
-                'stok_produk.required' => 'Waktu Sub kategori Tidak Boleh Kosong!',
-                'stok_produk.numeric' => 'Waktu Sub kategori Harus Berupa Angka!',
-                'harga_produk.required' => 'Harga Sub kategori Tidak Boleh Kosong!',
-                'harga_produk.numeric' => 'Harga Sub kategori Harus Berupa Angka!',
+                'nama_produk.required' => 'Nama produk Tidak Boleh Kosong!',
+                'nama_produk.max' => 'Nama produk Terlalu Panjang!',
+                'deskripsi_produk.required' => 'Deskripsi produk Tidak Boleh Kosong!',
+                'stok_produk.required' => 'Waktu produk Tidak Boleh Kosong!',
+                'stok_produk.numeric' => 'Waktu produk Harus Berupa Angka!',
+                'harga_produk.required' => 'Harga produk Tidak Boleh Kosong!',
+                'harga_produk.numeric' => 'Harga produk Harus Berupa Angka!',
             ]
         );
 
@@ -100,13 +100,13 @@ class AdminProdukController extends Controller
                 'stok_produk' => 'required|numeric',
                 'harga_produk' => 'required|numeric',
             ],[
-                'nama_produk.required' => 'Nama Sub kategori Tidak Boleh Kosong!',
-                'nama_produk.max' => 'Nama Sub kategori Terlalu Panjang!',
-                'deskripsi_produk.required' => 'Deskripsi Sub kategori Tidak Boleh Kosong!',
-                'stok_produk.required' => 'Waktu Sub kategori Tidak Boleh Kosong!',
-                'stok_produk.numeric' => 'Waktu Sub kategori Harus Berupa Angka!',
-                'harga_produk.required' => 'Harga Sub kategori Tidak Boleh Kosong!',
-                'harga_produk.numeric' => 'Harga Sub kategori Harus Berupa Angka!',
+                'nama_produk.required' => 'Nama produk Tidak Boleh Kosong!',
+                'nama_produk.max' => 'Nama produk Terlalu Panjang!',
+                'deskripsi_produk.required' => 'Deskripsi produk Tidak Boleh Kosong!',
+                'stok_produk.required' => 'Waktu produk Tidak Boleh Kosong!',
+                'stok_produk.numeric' => 'Waktu produk Harus Berupa Angka!',
+                'harga_produk.required' => 'Harga produk Tidak Boleh Kosong!',
+                'harga_produk.numeric' => 'Harga produk Harus Berupa Angka!',
             ]
         );
 

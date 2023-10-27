@@ -65,11 +65,11 @@ Route::middleware(['auth'])->group(function () {
   Route::middleware([Client::class])->name('customer.')->prefix('customer')->group(function () {
       Route::get('/', [HomeController::class, 'index'])->name('beranda');
       Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-      Route::resource('kategori', ClientKategoriController::class);
-      Route::resource('produk', ClientProdukController::class);
-      Route::resource('order', ClientOrderController::class);
     });
-
+    
+  Route::resource('kategori', ClientKategoriController::class);
+  Route::resource('produk', ClientProdukController::class);
+  Route::resource('order', ClientOrderController::class);
   Route::get('/profile/{id}', [UserProfileController::class, 'edit'])->name('profile.edit');
   Route::post('/profile/{id}', [UserProfileController::class, 'update'])->name('profile.update');
 });

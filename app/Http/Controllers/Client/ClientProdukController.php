@@ -3,14 +3,22 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\Produk;
+use App\Models\Kategori;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ClientprodukController extends Controller
+class ClientProdukController extends Controller
 {
     public function index()
     {
         $produks = Produk::all();
-        return view('client.produk.index', compact('produks'));
+        $kategoris = Kategori::all();
+        return view('client.produk.index', compact('produks', 'kategoris'));
+    }
+
+    public function show(string $id)
+    {
+        $produks = Produk::where('id', $id)->first();
+        return view('client.produk.show', compact('produks'));
     }
 }
