@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('no_telepon')->nullable();
             $table->string('jenis_kategori')->nullable();
             $table->string('jenis_transaksi')->default("pemasukan");
-            $table->timestamp('jumlah_order')->nullable();
+            $table->integer('jumlah_order')->nullable();
             $table->string('alamat_order')->nullable();
             $table->integer('harga_order')->nullable();
             $table->string('status_order');

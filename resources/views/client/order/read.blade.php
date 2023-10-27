@@ -8,7 +8,7 @@
         <div class="vh-100">
             @if (auth()->user()->roles_id == 3)
                 <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-                    <a href="{{ route('customer.m-order.index') }}" style="color:#E2DFEB;">
+                    <a href="{{ route('order.index') }}" style="color:#E2DFEB;">
                         <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                         <span class="fw-bolder px-2">Detail Transaksi</span>
                     </a>
@@ -80,7 +80,7 @@
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
-                        <label class="fw-bold text-md text-white" for="pesan_order">pesan_order</label>
+                        <label class="fw-bold text-md text-white" for="pesan_order">Catatan</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
                         name="pesan_order" id="pesan_order" value="{{ $order->pesan_order }}" disabled>
