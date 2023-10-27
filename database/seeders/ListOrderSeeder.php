@@ -19,7 +19,7 @@ class ListOrderSeeder extends Seeder
                 'token' => 'ord1736',
                 'user_order' => 'Andi',
                 'no_telepon' => '08482711123',
-                'jenis_kategori' => 'Makanan',
+                'produk' => 'Makanan',
                 'jenis_transaksi' => 'Pemasukan',
                 'jumlah_order' => 3,
                 'alamat_order' => 'Lampung',

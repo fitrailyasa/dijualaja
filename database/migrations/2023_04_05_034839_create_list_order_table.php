@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('user_order')->nullable();
             $table->string('no_telepon')->nullable();
-            $table->string('jenis_kategori')->nullable();
+            $table->string('produk')->nullable();
             $table->string('jenis_transaksi')->default("pemasukan");
             $table->integer('jumlah_order')->nullable();
             $table->string('alamat_order')->nullable();

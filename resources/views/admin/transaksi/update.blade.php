@@ -112,12 +112,11 @@
 
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex w-75">
-                    <label class="fw-bold text-md" for="jenis_kategori">Jenis kategori</label>
+                    <label class="fw-bold text-md" for="produk">Produk</label>
                 </div>
-                <input class="border-1 rounded-3 py-2 px-3 w-75 @error('jenis_kategori') is-invalid @enderror"
-                    type="text" name="jenis_kategori" id="jenis_kategori"
-                    value="{{ $order->jenis_kategori ?? 'Data Kosong' }}" disabled>
-                @error('jenis_kategori')
+                <input class="border-1 rounded-3 py-2 px-3 w-75 @error('produk') is-invalid @enderror" type="text"
+                    name="produk" id="produk" value="{{ $order->produk ?? 'Data Kosong' }}" disabled>
+                @error('produk')
                     <span class="invalid-feedback text-center" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -165,17 +164,6 @@
 
             <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex flex-column w-75 align-items-center">
-                    <label class="fw-bold text-md" for="foto_pesan_order">Foto pesan_order</label>
-                    <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}"
-                        class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
-                        name="foto_pesan_order" id="foto_pesan_order">
-                    @error('foto_pesan_order')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    <button data-bs-target="#modal_pesan_order" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        class="btn btn-primary mt-3">Lihat</button>
-                </div>
-                <div class="d-flex flex-column w-75 align-items-center">
                     <label class="fw-bold text-md" for="foto_pembayaran">Foto Pembayaran</label>
                     <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
                         class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
@@ -196,9 +184,6 @@
                                     <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                                 </button>
                             </div>
-                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}"
-                                class="border-1 rounded-3 py-2 px-3 bg-white align-items-center justify-content-center d-flex vh-100"
-                                style="object-fit: contain" name="foto_pesan_order" id="foto_pesan_order">
                         </div>
                     </div>
                 </div>
@@ -214,7 +199,7 @@
                             </div>
                             <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
                                 class="border-1 rounded-3 py-2 px-3 bg-white align-items-center justify-content-center d-flex vh-100"
-                                style="object-fit: contain" name="foto_pesan_order" id="foto_pesan_order">
+                                style="object-fit: contain" name="foto_pembayaran" id="foto_pembayaran">
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,6 @@ class DetailOrderSeeder extends Seeder
         $detail = [
             [
                 'list_id' => NULL,
-                'foto_pesan_order' => 'default.png',
                 'opsi_pengiriman' => 'COD',
                 'pembayaran' => 'Cash',
                 'foto_pembayaran' => 'default.png',

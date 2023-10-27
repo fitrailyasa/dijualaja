@@ -4,10 +4,10 @@
 
 @section('backlink')
     @if (auth()->user()->roles_id == 1)
-        <a href="{{ route('admin.transaksi.index') ?? 'KData osong' }}"><i
+        <a href="{{ route('admin.transaksi.index') ?? 'Data Kosong' }}"><i
                 class="fa small pr-1 fa-arrow-left text-dark"></i></a>
     @elseif (auth()->user()->roles_id == 2)
-        <a href="{{ route('seller.transaksi.index') ?? 'KData osong' }}"><i
+        <a href="{{ route('seller.transaksi.index') ?? 'Data Kosong' }}"><i
                 class="fa small pr-1 fa-arrow-left text-dark"></i></a>
     @endif
 @endsection
@@ -29,7 +29,7 @@
                     <input class="my-3 w-75 form-control" type="text" id="myInput" onkeyup="search()"
                         placeholder="Search...">
                     @foreach ($listorders as $transaksi)
-                        <div id="kartu-{{ $transaksi->id ?? 'KData osong' }}" class="card p-2 rounded-3 bg-success"
+                        <div id="kartu-{{ $transaksi->id ?? 'Data Kosong' }}" class="card p-2 rounded-3 bg-success"
                             style="width: 75%;">
                             <div class="d-flex mb-3">
                                 <div class="d-flex justify-content-center align-content-center">

@@ -64,11 +64,10 @@
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
-                        <label class="fw-bold text-md text-white" for="jenis_kategori">Jenis kategori</label>
+                        <label class="fw-bold text-md text-white" for="produk">Produk</label>
                     </div>
-                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="jenis_kategori" id="jenis_kategori" value="{{ $order->jenis_kategori ?? 'Data Kosong' }}"
-                        disabled>
+                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="produk"
+                        id="produk" value="{{ $order->produk ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -96,14 +95,6 @@
                 </div>
 
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
-                    <div class="d-flex flex-column w-75 align-items-center">
-                        <label class="fw-bold text-md text-white" for="foto_pesan_order">Foto pesan_order</label>
-                        <a href="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}">
-                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}"
-                                class="border-0 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
-                                name="foto_pesan_order" id="foto_pesan_order">
-                        </a>
-                    </div>
                     <div class="d-flex flex-column w-75 align-items-center">
                         <label class="fw-bold text-md text-white" for="foto_pembayaran">Foto Pembayaran</label>
                         <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}">

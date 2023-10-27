@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('list_id')->nullable();
             $table->foreign('list_id')->references('id')->on('list_order');
-            $table->string('foto_pesan_order')->nullable();
             $table->string('opsi_pengiriman')->nullable();
             $table->string('pembayaran')->nullable();
             $table->string('foto_pembayaran')->nullable();

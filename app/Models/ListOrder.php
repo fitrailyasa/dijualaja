@@ -14,7 +14,7 @@ class ListOrder extends Model
         'token',
         'user_order',
         'no_telepon',
-        'jenis_kategori',
+        'produk',
         'jenis_transaksi',
         'jumlah_order',
         'alamat_order',

@@ -27,7 +27,7 @@
                                 </label>
                             </div>
                             <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Nama Jenis kategori:
+                                <label class="col-sm-3 col-form-label">Nama Produk:
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('nama_produk') is-invalid @enderror"
@@ -51,11 +51,11 @@
                                 </div>
                             </div>
                             <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Estimasi Waktu :
+                                <label class="col-sm-3 col-form-label">Stok:
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('stok_produk') is-invalid @enderror"
-                                        name="stok_produk" id="stok_produk" value="{{ $order->stok_produk }} hari" required
+                                        name="stok_produk" id="stok_produk" value="{{ $order->stok_produk }}" required
                                         disabled />
                                     @error('stok_produk')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -82,12 +82,12 @@
             <!-- Modal -->
             <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1"
                 aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
-                <div class="modal-dialog modal-fullscreen pb-4">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content overflow-auto pb-4 bg-success">
                         <div class="d-flex px-3 pt-4">
                             <button type="button" class="border-0" data-bs-dismiss="modal" aria-label="Close"
-                                style="background-color: #24A384; color: #E2DFEB; font-size: 20px;">
-                                <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+                                style=" font-size: 20px;">
+                                <i class="fa fa-close font-weight-bolder"></i>
                             </button>
                             <span class="font-weight-bolder px-2" style="color: #E2DFEB; font-size: 20px;">Order</span>
                         </div>
@@ -123,8 +123,8 @@
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jenis_kategori">Jenis
-                                                kategori</label>
+                                            <label class="fw-bold text-md text-white mb-0 mt-2"
+                                                for="jenis_kategori">Produk</label>
                                         </div>
                                         <input class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal"
                                             type="text" name="jenis_kategori" required id="jenis_kategori"
@@ -134,14 +134,13 @@
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="harga_order">Estimasi
-                                                Waktu</label>
+                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jumlah_order">Jumlah
+                                                order</label>
                                         </div>
                                         <input
-                                            class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal @error('harga_order') is-invalid @enderror"
-                                            type="text" name="harga_order" required id="harga_order"
-                                            value="{{ $order->stok_produk }} hari" disabled>
-                                        @error('harga_order')
+                                            class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal @error('jumlah_order') is-invalid @enderror"
+                                            type="text" name="jumlah_order" required id="jumlah_order" required>
+                                        @error('jumlah_order')
                                             <span class="invalid-feedback text-center" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -186,7 +185,7 @@
 
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
-                                        <label class="fw-bold text-md text-white" for="pesan_order">pesan_order</label>
+                                        <label class="fw-bold text-md text-white" for="pesan_order">Catatan</label>
                                     </div>
                                     <input
                                         class="border-0 rounded-3 py-2 px-3 w-75 @error('pesan_order') is-invalid @enderror"
@@ -199,21 +198,8 @@
 
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
-                                        <label class="fw-bold text-md text-white" for="foto_pesan_order">Foto
-                                            pesan_order</label>
-                                    </div>
-                                    <input
-                                        class="border-0 rounded-3 py-2 px-3 w-75 bg-white @error('foto_pesan_order') is-invalid @enderror"
-                                        type="file" name="foto_pesan_order" required id="foto_pesan_order">
-                                    @error('foto_pesan_order')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="d-flex flex-column w-100 align-items-center">
-                                    <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="foto_pesan_order">QRIS dan
-                                            No.rekening SOC Clean</label>
+                                            No.rekening Dijualaja</label>
                                     </div>
                                     <div class="d-flex w-100">
                                         <a href="{{ asset('assets/img') }}/QRIS.jpg"
@@ -222,15 +208,15 @@
                                                 alt="">
                                         </a>
                                         <div class="justify-content-center align-items-start d-flex flex-column w-50">
-                                            <span class="">BCA: 8905837873</span>
-                                            <span class="">a.n muhamad rifai</span>
+                                            <span class="">BCA: 13863475</span>
+                                            <span class="">a.n Penjual Keren</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="input-group d-flex flex-column justify-content-center w-75">
-                                    <label class="fw-bold text-md text-white border-0" style="background-color: #24A384;"
-                                        for="pembayaran">Metode Pembayaran</label>
+                                    <label class="fw-bold text-md text-white border-0" for="pembayaran">Metode
+                                        Pembayaran</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required
                                         id="pembayaran" name="pembayaran">
                                         <option selected value="tunai">Tunai</option>
@@ -240,8 +226,7 @@
                                 </div>
 
                                 <div class="input-group d-flex flex-column justify-content-center w-75">
-                                    <label class="fw-bold text-md text-white border-0" style="background-color: #24A384;"
-                                        for="opsi_pengiriman">Opsi
+                                    <label class="fw-bold text-md text-white border-0" for="opsi_pengiriman">Opsi
                                         Pengiriman</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required
                                         id="opsi_pengiriman" name="opsi_pengiriman">
@@ -277,8 +262,7 @@
 
                                 <input type="hidden" name="jenis_transaksi" value="pemasukan">
 
-                                <button type="submit" class="btn w-25 mt-2"
-                                    style="background-color: #D6C37E;">Order</button>
+                                <button type="submit" class="btn w-25 mt-2 bg-primary">Checkout</button>
                             </div>
                     </div>
                 </div>
@@ -286,7 +270,7 @@
             </form>
             <div class="pb-5 d-flex justify-content-center align-items-center w-100">
                 <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal"
-                    class="btn w-50 mt-4" style="background-color: #D6C37E;">Pesan kategori</button>
+                    class="btn w-50 mb-4 bg-primary">Pesan Produk</button>
             </div>
         </section>
     </div>

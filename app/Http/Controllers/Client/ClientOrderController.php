@@ -38,7 +38,7 @@ class ClientOrderController extends Controller
         $request->validate(
             [
                 'user_order' => 'required|max:255',
-                'jenis_kategori' => 'required',
+                'produk' => 'required',
                 'no_telepon' => 'required',
                 'jumlah_order' => 'required',
                 'alamat_order' => 'required',
@@ -46,13 +46,12 @@ class ClientOrderController extends Controller
                 'pesan_order' => 'required',
                 'opsi_pengiriman' => 'required',
                 'pembayaran' => 'required',
-                'foto_pesan_order' => 'mimes:jpg,bmp,png,svg,jpeg,heif,hevc|max:10240',
                 'foto_pembayaran' => 'mimes:jpg,bmp,png,svg,jpeg,heif,hevc|max:10240',
             ],
             [
                 'user_order.required' => 'Nama Pemesan tidak boleh kosong',
                 'user_order.max' => 'Nama Pemesan tidak boleh lebih dari 255 karakter',
-                'jenis_kategori.required' => 'Jenis kategori tidak boleh kosong',
+                'produk.required' => 'Produk tidak boleh kosong',
                 'no_telepon.required' => 'Nomor Telepon tidak boleh kosong',
                 'jumlah_order.required' => 'Waktu Order tidak boleh kosong',
                 'alamat_order.required' => 'Alamat Order tidak boleh kosong',
@@ -61,8 +60,6 @@ class ClientOrderController extends Controller
                 'opsi_pengiriman.required' => 'Opsi Pengiriman tidak boleh kosong',
                 'pembayaran.required' => 'Pembayaran tidak boleh kosong',
                 'no_rekening.required' => 'Nomor Rekening tidak boleh kosong',
-                'foto_pesan_order.mimes' => 'Foto pesan_order harus berupa file: jpg, bmp, png, svg, jpeg, heif, hevc',
-                'foto_pesan_order.max' => 'Foto pesan_order tidak boleh lebih dari 10 MB',
                 'foto_pembayaran.mimes' => 'Foto Pembayaran harus berupa file: jpg, bmp, png, svg, jpeg, heif, hevc',
                 'foto_pembayaran.max' => 'Foto Pembayaran tidak boleh lebih dari 10 MB',
             ]
@@ -75,7 +72,7 @@ class ClientOrderController extends Controller
                 'token' => $token,
                 'user_id' => auth()->user()->id,
                 'user_order' => $request->user_order,
-                'jenis_kategori' => $request->jenis_kategori,
+                'produk' => $request->produk,
                 'no_telepon' => $request->no_telepon,
                 'jenis_transaksi' => 'pemasukan',
                 'jumlah_order' => $request->jumlah_order,
@@ -94,15 +91,8 @@ class ClientOrderController extends Controller
         ]);
         
         $validasi = $request->validate([
-            'foto_pesan_order' => 'mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
             'foto_pembayaran' => 'mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
         ]);
-        if($request->hasFile('foto_pesan_order')){
-            $foto_pesan_order = $validasi[('foto_pesan_order')];
-            $detailorder->foto_pesan_order = time().'_'.$foto_pesan_order->getClientOriginalName();
-            $detailorder->update();
-            $foto_pesan_order->move('../public/assets/img/pesan_order/',time().'_'.$foto_pesan_order->getClientOriginalName());
-        }
         if($request->hasFile('foto_pembayaran')){
             $foto_pembayaran = $validasi[('foto_pembayaran')];
             $detailorder->foto_pembayaran = time().'_'.$foto_pembayaran->getClientOriginalName();

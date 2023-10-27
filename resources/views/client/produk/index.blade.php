@@ -25,7 +25,7 @@
                                 </button>
                             </a>
                             <a
-                                href="https://wa.me/+6281397575460?text=Halo admin SOC Clean Lampung, Saya {{ auth()->user()->nama }}">
+                                href="https://wa.me/+6281397575460?text=Halo admin Dijualaja Lampung, Saya {{ auth()->user()->nama }}">
                                 <button class="btn fw-bold rounded-3 btn-success" id="Chat">
                                     Chat
                                 </button>
