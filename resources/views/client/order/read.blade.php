@@ -27,7 +27,7 @@
                         <label class="fw-bold text-md text-white" for="token">ID Transaksi</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="token"
-                        id="token" value="{{ $order->token }}" disabled>
+                        id="token" value="{{ $order->token ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -35,7 +35,7 @@
                         <label class="fw-bold text-md text-white" for="user_order">Nama</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="user_order"
-                        id="user_order" value="{{ auth()->user()->nama }}" disabled>
+                        id="user_order" value="{{ auth()->user()->nama ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -43,7 +43,7 @@
                         <label class="fw-bold text-md text-white" for="jumlah_order">Tanggal Order</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="jumlah_order" id="jumlah_order" value="{{ $order->jumlah_order }}" disabled>
+                        name="jumlah_order" id="jumlah_order" value="{{ $order->jumlah_order ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -51,7 +51,7 @@
                         <label class="fw-bold text-md text-white" for="no_telepon">Nomor Whatsapp</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="no_telepon"
-                        id="no_telepon" value="{{ auth()->user()->no_telepon }}" disabled>
+                        id="no_telepon" value="{{ auth()->user()->no_telepon ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -59,7 +59,7 @@
                         <label class="fw-bold text-md text-white" for="alamat_order">Alamat</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="alamat_order" id="alamat_order" value="{{ $order->alamat_order }}" disabled>
+                        name="alamat_order" id="alamat_order" value="{{ $order->alamat_order ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -67,7 +67,8 @@
                         <label class="fw-bold text-md text-white" for="jenis_kategori">Jenis kategori</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="jenis_kategori" id="jenis_kategori" value="{{ $order->jenis_kategori }}" disabled>
+                        name="jenis_kategori" id="jenis_kategori" value="{{ $order->jenis_kategori ?? 'Data Kosong' }}"
+                        disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -75,7 +76,7 @@
                         <label class="fw-bold text-md text-white" for="harga_order">Harga</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="number"
-                        name="harga_order" id="harga_order" value="{{ $order->harga_order }}" disabled>
+                        name="harga_order" id="harga_order" value="{{ $order->harga_order ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -83,7 +84,7 @@
                         <label class="fw-bold text-md text-white" for="pesan_order">Catatan</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="pesan_order" id="pesan_order" value="{{ $order->pesan_order }}" disabled>
+                        name="pesan_order" id="pesan_order" value="{{ $order->pesan_order ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -91,22 +92,22 @@
                         <label class="fw-bold text-md text-white" for="pembayaran">Pembayaran</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="pembayaran"
-                        id="pembayaran" value="{{ $detail->pembayaran }}" disabled>
+                        id="pembayaran" value="{{ $detail->pembayaran ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex flex-column w-75 align-items-center">
                         <label class="fw-bold text-md text-white" for="foto_pesan_order">Foto pesan_order</label>
-                        <a href="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}">
-                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order }}"
+                        <a href="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}">
+                            <img src="{{ asset('assets/img/pesan_order') }}/{{ $detail->foto_pesan_order ?? 'Data Kosong' }}"
                                 class="border-0 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
                                 name="foto_pesan_order" id="foto_pesan_order">
                         </a>
                     </div>
                     <div class="d-flex flex-column w-75 align-items-center">
                         <label class="fw-bold text-md text-white" for="foto_pembayaran">Foto Pembayaran</label>
-                        <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran }}">
-                            <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran }}"
+                        <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}">
+                            <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
                                 class="border-0 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
                                 name="foto_pembayaran" id="foto_pembayaran">
                         </a>
@@ -119,7 +120,8 @@
                         <label class="fw-bold text-md text-white" for="opsi_pengiriman">Opsi Pengiriman</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="opsi_pengiriman" id="opsi_pengiriman" value="{{ $detail->opsi_pengiriman }}" disabled>
+                        name="opsi_pengiriman" id="opsi_pengiriman"
+                        value="{{ $detail->opsi_pengiriman ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
@@ -127,7 +129,8 @@
                         <label class="fw-bold text-md text-white" for="no_rekening">No. Rekening (optional)</label>
                     </div>
                     <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
-                        name="no_rekening" id="no_rekening" value="{{ $detail->no_rekening }}" disabled>
+                        name="no_rekening" id="no_rekening" value="{{ $detail->no_rekening ?? 'Data Kosong' }}"
+                        disabled>
                 </div>
 
             </section>

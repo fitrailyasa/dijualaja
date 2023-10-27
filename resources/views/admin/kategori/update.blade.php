@@ -51,7 +51,7 @@
                     <div class="col-sm-9">
                         <input type="text" class="form-control @error('nama_kategori') is-invalid @enderror"
                             placeholder="Kategori" name="nama_kategori" id="nama_kategori"
-                            value="{{ $kategori->nama_kategori }}" required>
+                            value="{{ $kategori->nama_kategori ?? 'Data Kosong' }}" required>
                         @error('nama_kategori')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

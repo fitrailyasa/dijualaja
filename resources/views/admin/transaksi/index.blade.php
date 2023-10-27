@@ -4,9 +4,11 @@
 
 @section('backlink')
     @if (auth()->user()->roles_id == 1)
-        <a href="{{ route('admin.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+        <a href="{{ route('admin.transaksi.index') ?? 'KData osong' }}"><i
+                class="fa small pr-1 fa-arrow-left text-dark"></i></a>
     @elseif (auth()->user()->roles_id == 2)
-        <a href="{{ route('seller.transaksi.index') }}"><i class="fa small pr-1 fa-arrow-left text-dark"></i></a>
+        <a href="{{ route('seller.transaksi.index') ?? 'KData osong' }}"><i
+                class="fa small pr-1 fa-arrow-left text-dark"></i></a>
     @endif
 @endsection
 
@@ -27,33 +29,34 @@
                     <input class="my-3 w-75 form-control" type="text" id="myInput" onkeyup="search()"
                         placeholder="Search...">
                     @foreach ($listorders as $transaksi)
-                        <div id="kartu-{{ $transaksi->id }}" class="card p-2 rounded-3 bg-success" style="width: 75%;">
+                        <div id="kartu-{{ $transaksi->id ?? 'KData osong' }}" class="card p-2 rounded-3 bg-success"
+                            style="width: 75%;">
                             <div class="d-flex mb-3">
                                 <div class="d-flex justify-content-center align-content-center">
                                     <i class="fa-regular fa-file-lines p-3" style="font-size: 2rem;"></i>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center  overflow-hidden">
-                                    <p class="text-md fw-bolder">Pesanan #{{ $transaksi->user_order }}</p>
+                                    <p class="text-md fw-bolder">Pesanan #{{ $transaksi->user_order ?? 'Data Kosong' }}</p>
                                     <div class="d-flex">
                                         <span class="text-md">
-                                            {{ $transaksi->jumlah_order }}
+                                            {{ $transaksi->jumlah_order ?? 'Data Kosong' }}
                                         </span>
                                         <span class="text-md px-2">
-                                            {{ Str::limit($transaksi->pesan_order, 20) }}
+                                            {{ Str::limit($transaksi->pesan_order, 20) ?? 'Data Kosong' }}
                                         </span>
                                     </div>
                                 </div>
                             </div>
                             <hr class="col mt-0" style="background-color: white; color: #3d3c42; height: 3px;">
                             <div class="d-flex px-2 flex-row justify-content-between align-items-center">
-                                <span class="">{{ $transaksi->status_order }}</span>
+                                <span class="">{{ $transaksi->status_order ?? 'Data Kosong' }}</span>
                                 @if (auth()->user()->roles_id == 1)
-                                    <a href="{{ route('admin.transaksi.edit', $transaksi->id) }}"
+                                    <a href="{{ route('admin.transaksi.edit', $transaksi->id) ?? 'Data Kosong' }}"
                                         class="text-decoration-none">
                                         <button class="btn border border-3 text-white">Detail</button>
                                     </a>
                                 @elseif (auth()->user()->roles_id == 2)
-                                    <a href="{{ route('seller.transaksi.edit', $transaksi->id) }}"
+                                    <a href="{{ route('seller.transaksi.edit', $transaksi->id) ?? 'Data Kosong' }}"
                                         class="text-decoration-none">
                                         <button class="btn border border-3 text-white">Detail</button>
                                     </a>

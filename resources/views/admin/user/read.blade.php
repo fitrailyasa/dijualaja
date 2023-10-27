@@ -24,20 +24,21 @@
                 <div class="d-flex justify-content-center m-4">
                     <label for="gambar_user">
                         @if ($user->gambar_user == null)
-                            <img src="{{ asset('assets/profile') }}/default.png" class="img-circle elevation-2"
-                                style="width:200px !important; height:200px !important;" alt="">
+                            <img src="{{ asset('assets/profile') ?? 'Data Kosong' }}/default.png"
+                                class="img-circle elevation-2" style="width:200px !important; height:200px !important;"
+                                alt="">
                             @error('gambar_user')
                                 <span class="invalid-feedback text-center" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ $message ?? 'Data Kosong' }}</strong>
                                 </span>
                             @enderror
                         @else
-                            <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}"
+                            <img src="{{ asset('assets/profile') ?? 'Data Kosong' }}/{{ $user->gambar_user ?? 'Data Kosong' }}"
                                 style="width:200px !important; height:200px !important;" class="img-circle elevation-2"
                                 alt="">
                             @error('gambar_user')
                                 <span class="invalid-feedback text-center" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ $message ?? 'Data Kosong' }}</strong>
                                 </span>
                             @enderror
                         @endif
@@ -49,28 +50,28 @@
                     <label class="col-sm-3 col-form-label">Nama</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="nama" name="nama" id="nama"
-                            value="{{ $user->nama }}" disabled>
+                            value="{{ $user->nama ?? 'Data Kosong' }}" disabled>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="email" name="email" id="email"
-                            value="{{ $user->email }}" disabled>
+                            value="{{ $user->email ?? 'Data Kosong' }}" disabled>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">No Telepon</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="no_telepon" name="no_telepon"
-                            id="no_telepon" value="{{ $user->no_telepon }}" disabled>
+                            id="no_telepon" value="{{ $user->no_telepon ?? 'Data Kosong' }}" disabled>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Password</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="password" name="password" id="password"
-                            value="{{ $user->password }}" disabled>
+                            value="{{ $user->password ?? 'Data Kosong' }}" disabled>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -89,7 +90,8 @@
                 </div>
                 <div class="row">
                     <div class="text-right">
-                        <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.user.edit', $user->id) ?? 'Data Kosong' }}"
+                            class="btn btn-primary">Edit</a>
                     </div>
                 </div>
                 </form>
