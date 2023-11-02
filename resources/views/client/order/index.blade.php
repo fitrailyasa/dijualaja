@@ -25,8 +25,8 @@
             style="padding-bottom: 15vh;">
             <input class="my-3 w-75 form-control" type="text" id="myInput" onkeyup="search()" placeholder="Search...">
             @foreach ($orders->where('user_id') as $transaksi)
-                <div id="kartu-{{ $transaksi->id }}" class="card p-2 rounded-3 bg-success"
-                    style="border: 0.5px solid rgb(0, 119, 47); width: 75%; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
+                <div id="kartu-{{ $transaksi->id }}" class="card p-2 rounded-3 text-white"
+                    style="background-color: #117b46; border: 0.5px solid rgb(0, 119, 47); width: 75%; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
                     <div class="d-flex mb-3">
                         <div class="d-flex justify-content-center align-content-center">
                             <i class="fa-regular fa-file-lines p-3" style="font-size: 2rem;"></i>

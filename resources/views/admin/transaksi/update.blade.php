@@ -12,7 +12,7 @@
 
 @section('content')
 
-    <div class="vh-100">
+    <div class="">
         <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
             <a
                 href="https://wa.me/+62{{ $order->no_telepon }}?text=Halo saya {{ $order->user_order }} mengkonfirmasi pesanan">
@@ -36,8 +36,7 @@
                         </option>
                         <option value="Belum Dikonfirmasi">Belum Dikonfirmasi</option>
                         <option value="Dikonfirmasi">Dikonfirmasi</option>
-                        <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
-                        <option value="Dapat Diambil">Dapat Diambil</option>
+                        <option value="Sedang Dikemas">Sedang Dikemas</option>
                         <option value="Selesai">Selesai</option>
                     </select>
                 </div>
@@ -163,45 +162,15 @@
             </div>
 
             <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
-                <div class="d-flex flex-column w-75 align-items-center">
+                <div class="d-flex flex-column w-100 align-items-center">
                     <label class="fw-bold text-md" for="foto_pembayaran">Foto Pembayaran</label>
-                    <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
-                        class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
-                        name="foto_pembayaran" id="foto_pembayaran">
-                    @error('foto_pembayaran')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    <button data-bs-target="#modal_pembayaran" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        class="btn btn-primary mt-3">Lihat</button>
-                </div>
-                <div class="modal fade show" id="modal_pesan_order" tabindex="-1" aria-labelledby="modal_pesan_order"
-                    aria-modal="false" role="dialog">
-                    <div class="modal-dialog modal-fullscreen">
-                        <div class="modal-content">
-                            <div class="align-items-start">
-                                <button type="button" class="m-4 text-dark btn" data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                    <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade show" id="modal_pembayaran" tabindex="-1" aria-labelledby="modal_pembayaran"
-                    aria-modal="false" role="dialog">
-                    <div class="modal-dialog modal-fullscreen">
-                        <div class="modal-content">
-                            <div class="align-items-start">
-                                <button type="button" class="m-4 text-dark btn" data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                    <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                                </button>
-                            </div>
-                            <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
-                                class="border-1 rounded-3 py-2 px-3 bg-white align-items-center justify-content-center d-flex vh-100"
-                                style="object-fit: contain" name="foto_pembayaran" id="foto_pembayaran">
-                        </div>
-                    </div>
+                    <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}">
+                        <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
+                            class="border-0 rounded-3 py-2 px-3 bg-success" style="width: 8.2rem; height: 8.2rem;"
+                            name="foto_pembayaran" id="foto_pembayaran">
+                    </a>
+                    <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
+                        class="btn btn-primary m-2">Lihat</a>
                 </div>
             </div>
 
@@ -219,7 +188,7 @@
                 @enderror
             </div>
 
-            <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
+            <div class="d-flex flex-column w-100 align-items-center pt-3 pb-5 mb-5">
                 <div class="d-flex w-75">
                     <label class="fw-bold text-md" for="no_rekening">No. Rekening (optional)</label>
                 </div>

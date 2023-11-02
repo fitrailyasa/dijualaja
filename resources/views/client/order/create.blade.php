@@ -7,75 +7,73 @@
     <div class="pt-5 mt-3">
         <section class="px-4">
             <div class="col-lg-12 col-lg-12 form-wrapper" id="detail-produk">
-                <form action="">
-                    <div class="">
-                        <div class="p-3 text-white">
-                            @csrf
-                            <div class="d-flex justify-content-center m-4">
-                                <label for="gambar_produk">
-                                    @if ($order->gambar_produk == null)
-                                        <img src="{{ asset('assets/img') }}/default.png"
-                                            style="width:200px !important; height:200px !important;"
-                                            class="img-circle elevation-2" alt="">
-                                    @else
-                                        <img src="{{ asset('assets/img') }}/{{ $order->gambar_produk }}"
-                                            style="width:200px !important; height:200px !important;"
-                                            class="img-circle elevation-2" alt="">
-                                    @endif
-                                    <input type="file" class="visually-hidden" placeholder="gambar_produk"
-                                        name="gambar_produk" id="gambar_produk" disabled>
-                                </label>
+                <div class="">
+                    <div class="p-3 text-white">
+                        @csrf
+                        <div class="d-flex justify-content-center m-4">
+                            <label for="gambar_produk">
+                                @if ($order->gambar_produk == null)
+                                    <img src="{{ asset('assets/img') }}/default.png"
+                                        style="width:200px !important; height:200px !important;"
+                                        class="img-circle elevation-2" alt="">
+                                @else
+                                    <img src="{{ asset('assets/img') }}/{{ $order->gambar_produk }}"
+                                        style="width:200px !important; height:200px !important;"
+                                        class="img-circle elevation-2" alt="">
+                                @endif
+                                <input type="file" class="visually-hidden" placeholder="gambar_produk"
+                                    name="gambar_produk" id="gambar_produk" disabled>
+                            </label>
+                        </div>
+                        <div class="mb-2 pb-2 row">
+                            <label class="col-sm-3 col-form-label">Nama Produk:
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control @error('nama_produk') is-invalid @enderror"
+                                    name="nama_produk" id="nama_produk" value="{{ $order->nama_produk }}" required
+                                    disabled />
+                                @error('nama_produk')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Nama Produk:
-                                </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control @error('nama_produk') is-invalid @enderror"
-                                        name="nama_produk" id="nama_produk" value="{{ $order->nama_produk }}" required
-                                        disabled />
-                                    @error('nama_produk')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                        </div>
+                        <div class="mb-2 pb-2 row">
+                            <label class="col-sm-3 col-form-label">Deskripsi : </label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control @error('deskripsi_produk') is-invalid @enderror" name="deskripsi_produk"
+                                    id="deskripsi_produk" required disabled>{{ $order->deskripsi_produk }}</textarea>
+                                @error('deskripsi_produk')
+                                    <span class="invalid-feedback text-center" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Deskripsi : </label>
-                                <div class="col-sm-9">
-                                    <textarea class="form-control @error('deskripsi_produk') is-invalid @enderror" name="deskripsi_produk"
-                                        id="deskripsi_produk" required disabled>{{ $order->deskripsi_produk }}</textarea>
-                                    @error('deskripsi_produk')
-                                        <span class="invalid-feedback text-center" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                        </div>
+                        <div class="mb-2 pb-2 row">
+                            <label class="col-sm-3 col-form-label">Stok:
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control @error('stok_produk') is-invalid @enderror"
+                                    name="stok_produk" id="stok_produk" value="{{ $order->stok_produk }}" required
+                                    disabled />
+                                @error('stok_produk')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Stok:
-                                </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control @error('stok_produk') is-invalid @enderror"
-                                        name="stok_produk" id="stok_produk" value="{{ $order->stok_produk }}" required
-                                        disabled />
-                                    @error('stok_produk')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="mb-2 pb-2 row">
-                                <label class="col-sm-3 col-form-label">Harga : </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control @error('harga_produk') is-invalid @enderror"
-                                        name="harga_produk" id="harga_produk" value="{{ $order->harga_produk }}" required
-                                        disabled />
-                                    @error('harga_produk')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                        </div>
+                        <div class="mb-2 pb-2 row">
+                            <label class="col-sm-3 col-form-label">Harga : </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control @error('harga_produk') is-invalid @enderror"
+                                    name="harga_produk" id="harga_produk" value="{{ $order->harga_produk }}" required
+                                    disabled />
+                                @error('harga_produk')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
 
 
@@ -124,23 +122,23 @@
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
                                             <label class="fw-bold text-md text-white mb-0 mt-2"
-                                                for="jenis_kategori">Produk</label>
+                                                for="produk">Produk</label>
                                         </div>
                                         <input class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal"
-                                            type="text" name="jenis_kategori" required id="jenis_kategori"
+                                            type="text" name="produk" required id="produk"
                                             value="{{ $order->nama_produk }}" disabled>
-                                        <input type="hidden" name="jenis_kategori" value="{{ $order->nama_produk }}">
+                                        <input type="hidden" name="produk" value="{{ $order->nama_produk }}">
                                     </div>
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="">Jumlah
+                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jumlah_order">Jumlah
                                                 order</label>
                                         </div>
                                         <input
-                                            class="border-0 rounded-3 py-2 px-3 w-100 text-lg fw-normal @error('') is-invalid @enderror"
-                                            type="number" name="" required id="" required>
-                                        @error('')
+                                            class="border-0 rounded-3 py-2 px-3 w-100 text-lg fw-normal @error('jumlah_order') is-invalid @enderror"
+                                            type="number" name="jumlah_order" required id="jumlah_order" required>
+                                        @error('jumlah_order')
                                             <span class="invalid-feedback text-center" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -220,7 +218,7 @@
                                         Pembayaran</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required
                                         id="pembayaran" name="pembayaran">
-                                        <option selected value="tunai">Tunai</option>
+                                        <option selected value="Tunai">Tunai</option>
                                         <option value="QRIS">QRIS</option>
                                         <option value="BCA">Transfer BCA</option>
                                     </select>
@@ -231,8 +229,8 @@
                                         Pengiriman</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required
                                         id="opsi_pengiriman" name="opsi_pengiriman">
-                                        <option selected value="kunjungi toko">Kunjungi Toko</option>
-                                        <option value="antar jemput">Antar Jemput</option>
+                                        <option selected value="Kunjungi Toko">Kunjungi Toko</option>
+                                        <option value="Antar Jemput">Antar Jemput</option>
                                     </select>
                                 </div>
 
@@ -269,9 +267,9 @@
                 </div>
             </div>
             </form>
-            <div class="pb-5 d-flex justify-content-center align-items-center w-100">
+            <div class="px-4 pb-5 text-right">
                 <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal"
-                    class="btn w-50 mb-4 bg-primary">Pesan Produk</button>
+                    class="btn mb-4 bg-primary">Pesan Produk</button>
             </div>
         </section>
     </div>

@@ -20,12 +20,6 @@ class ClientOrderController extends Controller
         return view('client.order.index', compact('orders'));
     }
 
-    public function create()
-    {
-        $order = Produk::first();
-        return view('client.order.create', compact('order'));
-    }
-
     public function order(string $id)
     {
         $order = Produk::where('id', $id)->first();
@@ -100,12 +94,8 @@ class ClientOrderController extends Controller
             $foto_pembayaran->move('../public/assets/img/pembayaran/',time().'_'.$foto_pembayaran->getClientOriginalName());
         }
 
-        $dd($listorder);
-        $dd($detailorder);
-        exit();
-
         if (auth()->user()->roles_id == 3) {
-            return redirect('customer/order')->with('sukses', 'Berhasil Order!');
+            return redirect('/order')->with('sukses', 'Berhasil Order!');
         }
     }
 

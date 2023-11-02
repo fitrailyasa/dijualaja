@@ -5,7 +5,7 @@
 @section('content')
 
     <body class="" style="background-color: #24A384;">
-        <div class="vh-100">
+        <div class="">
             @if (auth()->user()->roles_id == 3)
                 <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
                     <a href="{{ route('order.index') }}" style="color:#E2DFEB;">
@@ -14,11 +14,11 @@
                     </a>
                 </section>
             @endif
-            <section class="px-4 pb-5">
-                <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
+            <section class="px-4 py-4">
+                <div class="d-flex flex-column w-100 justify-content-center align-items-center pt-3 pb-0">
                     <div class="fw-bold text-md text-white d-flex w-75 align-items-center">
                         <span class="pe-2">Status Order :</span>
-                        <span class="text-xl">{{ $order->status_order }}</span>
+                        <span class="btn btn-primary">{{ $order->status_order }}</span>
                     </div>
                 </div>
 
@@ -95,16 +95,17 @@
                 </div>
 
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
-                    <div class="d-flex flex-column w-75 align-items-center">
+                    <div class="d-flex flex-column w-100 align-items-center">
                         <label class="fw-bold text-md text-white" for="foto_pembayaran">Foto Pembayaran</label>
                         <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}">
                             <img src="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
                                 class="border-0 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;"
                                 name="foto_pembayaran" id="foto_pembayaran">
                         </a>
+                        <a href="{{ asset('assets/img/pembayaran') }}/{{ $detail->foto_pembayaran ?? 'Data Kosong' }}"
+                            class="btn btn-primary m-2">Lihat</a>
                     </div>
                 </div>
-
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
@@ -115,7 +116,7 @@
                         value="{{ $detail->opsi_pengiriman ?? 'Data Kosong' }}" disabled>
                 </div>
 
-                <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
+                <div class="d-flex flex-column w-100 align-items-center pt-3 pb-5 mb-5">
                     <div class="d-flex w-75">
                         <label class="fw-bold text-md text-white" for="no_rekening">No. Rekening (optional)</label>
                     </div>
