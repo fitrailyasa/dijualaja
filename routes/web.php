@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
   // CMS SELLER
-  Route::middleware([Operator::class])->name('seller.')->prefix('seller')->group(function () {
+  Route::middleware([Seller::class])->name('seller.')->prefix('seller')->group(function () {
       Route::get('/', [HomeController::class, 'index'])->name('beranda');
       Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
       Route::resource('kategori', AdminKategoriController::class);

@@ -15,11 +15,11 @@
                                 @if ($order->gambar_produk == null)
                                     <img src="{{ asset('assets/img') }}/default.png"
                                         style="width:200px !important; height:200px !important;"
-                                        class="img-circle elevation-2" alt="">
+                                        class="img-circle elevation-2 bg-white" alt="">
                                 @else
                                     <img src="{{ asset('assets/img') }}/{{ $order->gambar_produk }}"
                                         style="width:200px !important; height:200px !important;"
-                                        class="img-circle elevation-2" alt="">
+                                        class="img-circle elevation-2 bg-white" alt="">
                                 @endif
                                 <input type="file" class="visually-hidden" placeholder="gambar_produk"
                                     name="gambar_produk" id="gambar_produk" disabled>
@@ -132,21 +132,6 @@
 
                                     <div class="d-flex flex-column w-100 align-items-center">
                                         <div class="d-flex w-100">
-                                            <label class="fw-bold text-md text-white mb-0 mt-2" for="jumlah_order">Jumlah
-                                                order</label>
-                                        </div>
-                                        <input
-                                            class="border-0 rounded-3 py-2 px-3 w-100 text-lg fw-normal @error('jumlah_order') is-invalid @enderror"
-                                            type="number" name="jumlah_order" required id="jumlah_order" required>
-                                        @error('jumlah_order')
-                                            <span class="invalid-feedback text-center" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="d-flex flex-column w-100 align-items-center">
-                                        <div class="d-flex w-100">
                                             <label class="fw-bold text-md text-white mb-0 mt-2"
                                                 for="harga_order">Harga</label>
                                         </div>
@@ -171,6 +156,19 @@
 
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
+                                        <label class="fw-bold text-md text-white" for="jumlah_order">Jumlah Order</label>
+                                    </div>
+                                    <input
+                                        class="border-0 rounded-3 py-2 px-3 w-75 @error('jumlah_order') is-invalid @enderror"
+                                        type="text" name="jumlah_order" required id="jumlah_order"
+                                        placeholder="Masukkan alamat anda">
+                                    @error('jumlah_order')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="d-flex flex-column w-100 align-items-center">
+                                    <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="alamat_order">Alamat</label>
                                     </div>
                                     <input
@@ -189,7 +187,7 @@
                                     <input
                                         class="border-0 rounded-3 py-2 px-3 w-75 @error('pesan_order') is-invalid @enderror"
                                         type="text" name="pesan_order" required id="pesan_order"
-                                        placeholder="Masukkan pesan_order anda">
+                                        placeholder="Masukkan catatan order">
                                     @error('pesan_order')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
