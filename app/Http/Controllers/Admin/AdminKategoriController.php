@@ -52,6 +52,8 @@ class AdminkategoriController extends Controller
 
         if (auth()->user()->roles_id == 1) {
             return redirect('admin/kategori')->with('sukses', 'Berhasil Tambah Data!');
+        } else if (auth()->user()->roles_id == 2) {
+            return redirect('seller/kategori')->with('sukses', 'Berhasil Tambah Data!');
         }
     }
 
@@ -105,6 +107,8 @@ class AdminkategoriController extends Controller
 
         if (auth()->user()->roles_id == 1) {
             return redirect('admin/kategori/'.$id.'/edit')->with('sukses', 'Berhasil Edit Data!');
+        } else if (auth()->user()->roles_id == 2) {
+            return redirect('seller/kategori/'.$id.'/edit')->with('sukses', 'Berhasil Edit Data!');
         }
     }
 
@@ -115,6 +119,8 @@ class AdminkategoriController extends Controller
 
         if (auth()->user()->roles_id == 1) {
             return redirect('admin/kategori')->with('sukses', 'Berhasil Hapus Data!');
+        } else if (auth()->user()->roles_id == 2) {
+            return redirect('seller/kategori')->with('sukses', 'Berhasil Hapus Data!');
         }
     }
 }

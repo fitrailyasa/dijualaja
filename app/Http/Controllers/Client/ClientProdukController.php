@@ -11,8 +11,8 @@ class ClientProdukController extends Controller
 {
     public function index()
     {
-        $produks = Produk::all();
-        $kategoris = Kategori::all();
+        $produks = Produk::latest('id')->get();
+        $kategoris = Kategori::latest('id')->get();
         return view('client.produk.index', compact('produks', 'kategoris'));
     }
 

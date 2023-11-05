@@ -19,8 +19,9 @@ class AdminDashboardController extends Controller
         $produk = Produk::all()->count();
         $kategori = Kategori::all()->count();
 
-        $produks = Produk::all();
-        $kategoris = Kategori::all();
+        $produks = Produk::latest('id')->get(); // Sort products by the latest ID in descending order
+        $kategoris = Kategori::latest('id')->get(); // Sort categories by the latest ID in descending order
+
         if (auth()->user()->roles_id == 1){
             return view('admin.dashboard', compact('user', 'seller', 'customer', 'produk', 'kategori'));
         } else if (auth()->user()->roles_id == 2){

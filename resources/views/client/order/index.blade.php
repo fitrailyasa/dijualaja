@@ -55,7 +55,7 @@
                                 <button class="btn border border-3 text-white">Detail</button>
                             </a>
                         @elseif (auth()->user()->roles_id == 3)
-                            <a href="{{ route('order.show', $transaksi->id) }}" class="text-decoration-none">
+                            <a href="{{ route('order.edit', $transaksi->id) }}" class="text-decoration-none">
                                 <button class="btn border border-3 text-white">Detail</button>
                             </a>
                         @endif

@@ -160,8 +160,8 @@
                                     </div>
                                     <input
                                         class="border-0 rounded-3 py-2 px-3 w-75 @error('jumlah_order') is-invalid @enderror"
-                                        type="text" name="jumlah_order" required id="jumlah_order"
-                                        placeholder="Masukkan alamat anda">
+                                        type="number" name="jumlah_order" required id="jumlah_order"
+                                        placeholder="Masukkan jumlah order">
                                     @error('jumlah_order')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -199,11 +199,8 @@
                                             No.rekening Dijualaja</label>
                                     </div>
                                     <div class="d-flex w-100">
-                                        <a href="{{ asset('assets/img') }}/QRIS.jpg"
-                                            class="w-50 d-flex justify-content-center align-items-center">
-                                            <img src="{{ asset('assets/img') }}/QRIS.jpg" class="w-50 align-items-center"
-                                                alt="">
-                                        </a>
+                                        <img src="{{ asset('assets/img') }}/QRIS.jpg" class="w-50 align-items-center"
+                                            alt="">
                                         <div class="justify-content-center align-items-start d-flex flex-column w-50">
                                             <span class="">BCA: 13863475</span>
                                             <span class="">a.n Penjual Keren</span>

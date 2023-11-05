@@ -12,6 +12,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Ikon</th>
                             <th>Produk</th>
                             <th>Kategori</th>
                             <th>Harga</th>
@@ -23,6 +24,8 @@
                         @foreach ($produks as $produk)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td><img src="{{ asset('assets/img') }}/{{ $produk->gambar_produk }}" width="50"
+                                        height="50"></td>
                                 <td>{{ $produk->nama_produk }}</td>
                                 <td>{{ $produk->kategori->nama_kategori }}</td>
                                 <td>{{ $produk->harga_produk }}</td>
@@ -63,45 +66,43 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @elseif (auth()->user()->roles_id == 2)
-                                            <a href="{{ route('seller.produk.show', $produk->id) }}"
-                                                class="btn-sm btn-success">Detail</a>
-                                            <a href="{{ route('seller.produk.edit', $produk->id) }}"
-                                                class="btn-sm btn-warning">Edit</a>
-                                            <!-- Button trigger modal -->
-                                            <a role="button" class="btn-sm btn-danger delete-button" data-bs-toggle="modal"
-                                                data-bs-target=".bd-example-modal-sm{{ $produk->id }}">
-                                                Hapus
-                                            </a>
-                                            <!-- Modal -->
-                                            <div class="modal fade bd-example-modal-sm{{ $produk->id }}" tabindex="-1"
-                                                role="dialog" aria-hidden="">
-                                                <div class="modal-dialog ">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"><strong>Hapus Data</strong></h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">Apakah anda yakin ingin menghapus data?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form
-                                                                action="{{ route('seller.produk.destroy', $produk->id) }}"
-                                                                method="POST">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <input type="submit" class="btn btn-danger light"
-                                                                    name="" id="" value="Hapus">
-                                                                <button type="button" class="btn btn-primary"
-                                                                    data-bs-dismiss="modal">Tidak</button>
-                                                            </form>
-                                                        </div>
+                                    @elseif (auth()->user()->roles_id == 2)
+                                        <a href="{{ route('seller.produk.show', $produk->id) }}"
+                                            class="btn-sm btn-success">Detail</a>
+                                        <a href="{{ route('seller.produk.edit', $produk->id) }}"
+                                            class="btn-sm btn-warning">Edit</a>
+                                        <!-- Button trigger modal -->
+                                        <a role="button" class="btn-sm btn-danger delete-button" data-bs-toggle="modal"
+                                            data-bs-target=".bd-example-modal-sm{{ $produk->id }}">
+                                            Hapus
+                                        </a>
+                                        <!-- Modal -->
+                                        <div class="modal fade bd-example-modal-sm{{ $produk->id }}" tabindex="-1"
+                                            role="dialog" aria-hidden="">
+                                            <div class="modal-dialog ">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title"><strong>Hapus Data</strong></h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">Apakah anda yakin ingin menghapus data?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="{{ route('seller.produk.destroy', $produk->id) }}"
+                                                            method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <input type="submit" class="btn btn-danger light"
+                                                                name="" id="" value="Hapus">
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-bs-dismiss="modal">Tidak</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -109,6 +110,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
+                            <th>Ikon</th>
                             <th>Produk</th>
                             <th>Kategori</th>
                             <th>Harga</th>

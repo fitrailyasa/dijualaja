@@ -68,11 +68,11 @@ class ClientOrderController extends Controller
                 'user_order' => $request->user_order,
                 'produk' => $request->produk,
                 'no_telepon' => $request->no_telepon,
-                'jenis_transaksi' => 'pemasukan',
+                'jenis_transaksi' => 'Pemasukan',
                 'jumlah_order' => $request->jumlah_order,
                 'alamat_order' => $request->alamat_order,
                 'harga_order' => $request->harga_order,
-                'status_order' => 'Menunggu Konfirmasi',
+                'status_order' => $request->status_order,
                 'pesan_order' => $request->pesan_order
                 ]
             );
@@ -99,10 +99,23 @@ class ClientOrderController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function edit(string $id)
     {
         $order = ListOrder::where('id', $id)->first();
-        $detail = DetailOrder::where('list_id', $id)->first();
-        return view('client.order.read', compact('order', 'detail'));
+        return view('client.order.update', compact('order'));
+    }
+
+    public function update(Request $request, string $id) 
+    {
+        $order = ListOrder::where('id', $id)->first();
+        $order->update(
+            [
+                'status_order' => $request->status_order
+            ]
+        );
+
+        if (auth()->user()->roles_id == 3) {
+            return redirect('/order')->with('sukses', 'Berhasil Update Data!');
+        }
     }
 }

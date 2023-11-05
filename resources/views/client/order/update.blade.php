@@ -15,12 +15,21 @@
                 </section>
             @endif
             <section class="px-4 py-4">
-                <div class="d-flex flex-column w-100 justify-content-center align-items-center pt-3 pb-0">
-                    <div class="fw-bold text-md text-white d-flex w-75 align-items-center">
-                        <span class="pe-2">Status Order :</span>
-                        <span class="btn btn-primary">{{ $order->status_order }}</span>
+                <form action="{{ route('order.update', $order->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="d-flex flex-column w-100 justify-content-center align-items-center pt-3 pb-0">
+                        <div class="fw-bold text-md text-white d-flex w-75 align-items-center">
+                            <span class="pe-2">Status Order :</span>
+                            <select class="custom-select border-0 rounded-3 py-2 px-3 w-75" name="status_order"
+                                id="status_order">
+                                <option value="{{ $order->status_order }}">{{ $order->status_order }}</option>
+                                <option value="Pesanan Diterima">Pesanan Diterima</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-sm btn-primary mt-3" type="submit">Update</button>
                     </div>
-                </div>
+                </form>
 
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
@@ -90,8 +99,8 @@
                     <div class="d-flex w-75">
                         <label class="fw-bold text-md text-white" for="pembayaran">Pembayaran</label>
                     </div>
-                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="pembayaran"
-                        id="pembayaran" value="{{ $detail->pembayaran ?? 'Data Kosong' }}" disabled>
+                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text"
+                        name="pembayaran" id="pembayaran" value="{{ $detail->pembayaran ?? 'Data Kosong' }}" disabled>
                 </div>
 
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
