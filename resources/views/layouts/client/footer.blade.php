@@ -28,8 +28,14 @@
                                 class="fa-solid fa-tag fs-4"></i></a>
                     @endif
                 </li>
-                <li><a href="{{ route('profile.edit', auth()->user()->id) }}"
-                        class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-user fs-4"></i></a>
+                <li><a href="{{ route('profile.edit', auth()->user()->id) }}" class="nav-link text-white fw-bold">
+                        @if (Auth::user()->gambar_user != null)
+                            <img src="{{ asset('assets/profile') }}/{{ auth()->user()->gambar_user }}" width="30"
+                                class="img-circle " alt="User Image">
+                        @else
+                            <i class="fa-solid fa-user fs-4"></i>
+                        @endif
+                    </a>
                 </li>
             </ul>
         </div>

@@ -13,28 +13,18 @@
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype='multipart/form-data'>
+                    @method('PUT')
                     @csrf
                     <div class="d-flex justify-content-center m-4">
-                        <label for="gambar_user" style="cursor: pointer">
-                            @if ($user->gambar_user == null)
-                                <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
-                                <input type="file" onchange="loadFile(event)" class="visually-hidden" name="gambar_user"
-                                    id="gambar_user" enabled>
-                                @error('gambar_user')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            @else
-                                <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}" id="ikon_fa"
-                                    style="width:200px !important; height:200px !important;" class="img-circle elevation-2"
-                                    alt="">
-                                @error('gambar_user')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            @endif
-                            <img src="" id="output"
-                                style="max-width: 200px; max-height:200px; aspect-ratio: 1 / 1;"
-                                class="img-circle elevation-2 visually-hidden" alt="">
-                        </label>
+                        @if (Auth::user()->gambar_user)
+                            <img src="{{ asset('assets/profile') }}/{{ auth()->user()->gambar_user }}"
+                                class="img-circle elevation-2" alt="User Image"
+                                style="width: 200px; height: 200px; object-fit: cover; object-position: center; border-radius: 50%;">
+                        @else
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="User Image"
+                                style="width: 200px; height: 200px; object-fit: cover; object-position: center; border-radius: 50%;">
+                        @endif
+
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">Nama</label>

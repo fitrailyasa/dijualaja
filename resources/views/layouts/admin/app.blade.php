@@ -94,8 +94,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <a href="{{ route('profile.edit', auth()->user()->id) }}" class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Auth::user()->foto_user != null)
-                            <img src="{{ asset('assets/profile/' . Auth::user()->foto_user) }}"
+                        @if (Auth::user()->gambar_user != null)
+                            <img src="{{ asset('assets/profile') }}/{{ auth()->user()->gambar_user }}"
                                 class="img-circle elevation-2" alt="User Image"
                                 style="width: 35px; height: 35px; object-fit: cover; object-position: center; border-radius: 50%;">
                         @else
@@ -189,7 +189,14 @@
                             @endif
                         </li>
                         <li><a href="{{ route('profile.edit', auth()->user()->id) }}"
-                                class="nav-link px-2 text-white fw-bold"><i class="fa-solid fa-user fs-4"></i></a>
+                                class="nav-link px-2 text-white fw-bold">
+                                @if (Auth::user()->gambar_user != null)
+                                    <img src="{{ asset('assets/profile') }}/{{ auth()->user()->gambar_user }}"
+                                        width="30" class="img-circle " alt="User Image">
+                                @else
+                                    <i class="fa-solid fa-user fs-4"></i>
+                                @endif
+                            </a>
                         </li>
                     </ul>
                 </div>

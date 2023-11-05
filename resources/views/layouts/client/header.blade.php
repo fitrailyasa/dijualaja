@@ -73,7 +73,12 @@
                     </a>
                     <a href="{{ route('profile.edit', auth()->user()->id) }}"
                         class="ml-4 border rounded-circle nav-link px-2 text-white fw-bold d-none d-lg-block">
-                        <i class="fa-solid fa-user fs-4 px-1"></i>
+                        @if (Auth::user()->gambar_user != null)
+                            <img src="{{ asset('assets/profile') }}/{{ auth()->user()->gambar_user }}"
+                                width="30" class="img-circle " alt="User Image">
+                        @else
+                            <i class="fa-solid fa-user fs-4"></i>
+                        @endif
                     </a>
                 </div>
             </div>

@@ -61,20 +61,15 @@ class UserProfileController extends Controller
             ]
         );
 
-        if($request->hasFile('gambar_user')){
-            $gambar_user = $validasi[('gambar_user')];
-            $user->gambar_user = time().'_'.$gambar_user->getClientOriginalName();
+        if ($request->hasFile('gambar_user')) {
+            $gambar_user = $request->file('gambar_user');
+            $nama_file = time() . '_' . $gambar_user->getClientOriginalName();
+            $user->gambar_user = $nama_file;
             $user->update();
-            $gambar_user->move('../public/assets/profile/',time().'_'.$gambar_user->getClientOriginalName());
+            $gambar_user->move(public_path('assets/profile/'), $nama_file);
         }
 
-        if (auth()->user()->roles_id == 1) {
-            return redirect('profile/'.$id)->with('sukses', 'Berhasil Edit Data!');
-        } else if (auth()->user()->roles_id == 2) {
-            return redirect('profile/'.$id)->with('sukses', 'Berhasil Edit Data!');
-        } else if (auth()->user()->roles_id == 3) {
-            return redirect('profile/'.$id)->with('sukses', 'Berhasil Edit Data!');
-        }
+        return redirect('profile/'.$id.'/edit')->with('sukses', 'Berhasil Edit Data!');
     }
 
 }
