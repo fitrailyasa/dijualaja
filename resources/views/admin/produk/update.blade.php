@@ -18,6 +18,9 @@
             <div class="card-body">
                 @if (auth()->user()->roles_id == 1)
                     <form method="POST" action="{{ route('admin.produk.show', $produk->id) }}" enctype='multipart/form-data'>
+                    @elseif (auth()->user()->roles_id == 2)
+                        <form method="POST" action="{{ route('seller.produk.show', $produk->id) }}"
+                            enctype='multipart/form-data'>
                 @endif
                 @csrf
                 @method('PUT')

@@ -23,26 +23,30 @@
             </a>
         </div>
         <section class="px-4 pb-5">
-            <form action="{{ route('admin.transaksi.update', $order->id) ?? 'Data Kosong' }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
-                    <div class="d-flex w-75">
-                        <label class="fw-bold text-md" for="status_order">Status</label>
-                    </div>
-                    <select class="custom-select d-flex w-75 rounded-3" id="status_order" name="status_order" enabled>
-                        <option hidden selected value="{{ $order->status_order ?? 'Data Kosong' }}">
-                            {{ $order->status_order }}
-                        </option>
-                        <option value="Belum Dikonfirmasi">Belum Dikonfirmasi</option>
-                        <option value="Dikonfirmasi">Dikonfirmasi</option>
-                        <option value="Sedang Dikemas">Sedang Dikemas</option>
-                        <option value="Selesai">Selesai</option>
-                    </select>
+            @if (auth()->user()->roles_id == 1)
+                <form action="{{ route('admin.transaksi.update', $order->id) ?? 'Data Kosong' }}" method="POST">
+                @elseif (auth()->user()->roles_id == 2)
+                    <form action="{{ route('seller.transaksi.update', $order->id) ?? 'Data Kosong' }}" method="POST">
+            @endif
+            @csrf
+            @method('PUT')
+            <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
+                <div class="d-flex w-75">
+                    <label class="fw-bold text-md" for="status_order">Status</label>
                 </div>
-                <div class="d-flex justify-content-center w-100 py-4">
-                    <button class="btn btn-primary w-50" type="submit">Update Status</button>
-                </div>
+                <select class="custom-select d-flex w-75 rounded-3" id="status_order" name="status_order" enabled>
+                    <option hidden selected value="{{ $order->status_order ?? 'Data Kosong' }}">
+                        {{ $order->status_order }}
+                    </option>
+                    <option value="Belum Dikonfirmasi">Belum Dikonfirmasi</option>
+                    <option value="Dikonfirmasi">Dikonfirmasi</option>
+                    <option value="Sedang Dikemas">Sedang Dikemas</option>
+                    <option value="Selesai">Selesai</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-center w-100 py-4">
+                <button class="btn btn-primary w-50" type="submit">Update Status</button>
+            </div>
             </form>
             <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                 <div class="d-flex w-75">
